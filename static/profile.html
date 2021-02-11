@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Profile</title>
+</head>
+<body>
+<div class="container">
+        <div class="profile">
+            <div class="profile__button">
+                <a href="./chat.html">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="14" cy="14" r="14" transform="rotate(-180 14 14)" fill="#34b76f"/>
+                        <rect x="20" y="14.8" width="11" height="1.6" transform="rotate(-180 20 14.8)" fill="white"/>
+                        <path d="M13 19L9 14L13 9" stroke="white" stroke-width="1.6"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="profile__avatar">
+                <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="65" cy="65" r="65" fill="#EFEFEF"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M81 47H49C47.8954 47 47 47.8954 47 49V70.2667L59.6547 67.3139C60.5486 67.1053 61.4635 67 62.3814 67H67.6186C68.5365 67 69.4514 67.1053 70.3453 67.3139L83 70.2667V49C83 47.8954 82.1046 47 81 47ZM49 45C46.7909 45 45 46.7909 45 49V81C45 83.2091 46.7909 85 49 85H81C83.2091 85 85 83.2091 85 81V49C85 46.7909 83.2091 45 81 45H49ZM55.9091 59.5455C57.9174 59.5455 59.5455 57.9174 59.5455 55.9091C59.5455 53.9008 57.9174 52.2727 55.9091 52.2727C53.9008 52.2727 52.2728 53.9008 52.2728 55.9091C52.2728 57.9174 53.9008 59.5455 55.9091 59.5455Z" fill="#CDCDCD"/>
+                </svg>
+            </div>
+            <h2 class="profile__name">Иван</h2>
+            <div class="profile__wrapper">
+                <ul class="profile-data">
+                    <li class="profile-data__item">
+                        <div class="profile-data__description">Почта</div>
+                        <span class="profile-data__value">pochta@yandex.ru</span>
+                    </li>
+                    <li class="profile-data__item">
+                        <div class="profile-data__description">Логин</div>
+                        <span class="profile-data__value">ivanivanov</span>
+                    </li>
+                    <li class="profile-data__item">
+                        <div class="profile-data__description">Имя</div>
+                        <span class="profile-data__value">Иван</span>
+                    </li>
+                    <li class="profile-data__item">
+                        <div class="profile-data__description">Фамилия</div>
+                        <span class="profile-data__value">Иванов</span>
+                    </li>
+                    <li class="profile-data__item">
+                        <div class="profile-data__description">Имя в чате</div>
+                        <span class="profile-data__value">Иван</span>
+                    </li>
+                    <li class="profile-data__item">
+                        <div class="profile-data__description">Телефон</div>
+                        <span class="profile-data__value">+7 (909) 967 30 30</span>
+                    </li>
+                </ul>
+                <a href="edit-profile-data.html" class="profile__link profile__link--theme-info">Изменить данные</a>
+                <a href="edit-profile-password.html" class="profile__link profile__link--theme-info">Изменить пароль</a>
+                <a href="" class="profile__link profile__link--theme-danger">Выйти</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal__wrapper">
+            <form class="form">
+                <h2 class="form__title modal__title">Загрузите файл</h2>
+                <div class="form__field">
+                    <label class="form__label form__label--mode-upload">
+                        Выбрать файл на компьютере
+                        <input class="form__input visually-hidden" name="avatar" type="file">
+                    </label>
+                </div>
+                <div class="form__actions">
+                    <button class="form__button modal__button" type="submit">Поменять</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

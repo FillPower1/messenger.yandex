@@ -1,0 +1,26 @@
+{
+    "name": "mf.messenger.praktikum.yandex",
+    "version": "1.0.0",
+    "description": "Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node stub"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FillPower1/mf.messenger.praktikum.yandex.git"
+    },
+    "engines": {
+        "node": "14.15.4"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/FillPower1/mf.messenger.praktikum.yandex/issues"
+    },
+    "homepage": "https://github.com/FillPower1/mf.messenger.praktikum.yandex#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
