@@ -1,10 +1,10 @@
 {
     "name": "mf.messenger.praktikum.yandex",
     "version": "1.0.0",
-    "description": "Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.",
+    "description": "Мессенджер на нативном JavaScript",
     "main": "index.js",
     "scripts": {
-        "start": "node stub"
+        "start": "node server.js"
     },
     "repository": {
         "type": "git",
