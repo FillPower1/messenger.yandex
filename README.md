@@ -7,11 +7,13 @@ https://wonderful-joliot-c7d2a5.netlify.app/
 
 ## Описание
 
-Мессенджер на нативном JavaScript.
+Мессенджер на TypeScript. 
 
 ## Запуск
 
 Проект разворачивается на `localhost:3000`
 
 Команды:
-- `npm start` — запуск dev версии проекта
+- `npm start` — запуск локального сервера
+- `npm dev` — режим для разработки на typescript
+- `npm compile` — компиляция .ts файлов (target)
