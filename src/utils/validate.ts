@@ -32,7 +32,7 @@ export class Validate {
         this.options = this.updateOptions(options)
     }
 
-    updateOptions = (options: OptionsType) => {
+    private updateOptions = (options: OptionsType) => {
         return Object.keys(options).reduce((memo, key) => {
             const span = document.createElement('span')
             span.classList.add(Validate.className)
@@ -46,18 +46,18 @@ export class Validate {
         this.getOptionKeys.forEach(this.initInputEvents)
     }
 
-    initInputEvents = (name: string): void => {
+    private initInputEvents = (name: string): void => {
         this.form[name].addEventListener('keyup', this.handleOnInput)
         this.form[name].addEventListener('focus', this.handleOnInput)
         this.form[name].addEventListener('blur', this.handleOnInput)
         this.form[name].dataset.type = Types.required
     }
 
-    get getOptionKeys(): string[] {
+    private get getOptionKeys(): string[] {
         return Object.keys(this.options)
     }
 
-    getCurrentNode(name: string, type: string | undefined): HTMLElement {
+    private getCurrentNode(name: string, type: string | undefined): HTMLElement {
         const currentInput = this.options[name]
         const node: HTMLElement = currentInput.node
         const prompt = currentInput.rules.find((r: { type: string }) => r.type === type)?.prompt
@@ -85,7 +85,7 @@ export class Validate {
         return validList.every((b) => b)
     }
 
-    validateInput = (input: HTMLInputElement): boolean => {
+    private validateInput = (input: HTMLInputElement): boolean => {
         const parent = input.closest(Validate.defaultWrapper)
         const { dataset: { type }, name } = input
         const node = this.getCurrentNode(name, type)
@@ -103,12 +103,12 @@ export class Validate {
         }
     }
 
-    handleOnInput = (e: { target: HTMLInputElement }): void => {
+    private handleOnInput = (e: { target: HTMLInputElement }): void => {
         this.updateDataType(e.target)
         this.validateInput(e.target)
     }
 
-    updateDataType = (input: HTMLInputElement) => {
+    private updateDataType = (input: HTMLInputElement) => {
         const { value, dataset, name } = input
 
         if (value.length === 0) {
@@ -120,7 +120,7 @@ export class Validate {
         }
     }
 
-    isMatched = (value: string, name: string): boolean => {
+    private isMatched = (value: string, name: string): boolean => {
         const pattern = this.options[name].pattern
 
         if (!pattern) {
