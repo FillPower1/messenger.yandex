@@ -1,4 +1,4 @@
-import { Block } from '../../../core/index.js'
+import { Block } from '../../../core/block/index.js'
 import { renderChild } from '../../../utils/render.js'
 
 import { Search } from './search/index.js'

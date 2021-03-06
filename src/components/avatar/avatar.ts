@@ -1,4 +1,4 @@
-import { Block } from '../../core/block.js'
+import { Block } from '../../core/block/block.js'
 import { templator } from '../../utils/templator.js'
 
 import template from './avatar.tmpl.js'

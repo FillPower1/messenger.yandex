@@ -1,4 +1,4 @@
-import { Block } from '../../../core/index.js'
+import { Block } from '../../../core/block/index.js'
 import { render, renderChild } from '../../../utils/render.js'
 import { Validate } from '../../../utils/validate.js'
 import { ProfileButton } from '../../../components/profile-button/index.js'

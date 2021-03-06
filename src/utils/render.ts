@@ -1,4 +1,4 @@
-import { Block } from '../core/block.js'
+import { Block } from '../core/block/index.js'
 
 export function renderChild(
     parent: HTMLElement,

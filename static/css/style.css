@@ -36,6 +36,10 @@ body {
     margin: -1px;
 }
 
+.hidden {
+    display: none; !important;
+}
+
 .error {
     width: 100%;
     height: 100%;

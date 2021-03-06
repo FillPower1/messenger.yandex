@@ -1,4 +1,4 @@
-import { Block } from '../../../core/index.js'
+import { Block } from '../../../core/block/index.js'
 import { Validate } from '../../../utils/validate.js'
 
 import { Form } from '../form/index.js'

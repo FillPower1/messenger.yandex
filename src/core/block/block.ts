@@ -1,4 +1,4 @@
-import { EventBus } from '../__data__/index.js'
+import { EventBus } from '../event-bus/index.js'
 
 import { Events, Props } from './types.js'
 
@@ -131,10 +131,10 @@ export class Block {
     }
 
     show(): void {
-        this.getContent().style.display = 'block'
+        this.getContent().classList.remove('hidden')
     }
 
     hide(): void {
-        this.getContent().style.display = 'none'
+        this.getContent().classList.add('hidden')
     }
 }

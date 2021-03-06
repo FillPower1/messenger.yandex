@@ -1,4 +1,4 @@
-import { Block } from '../../../core/index.js'
+import { Block } from '../../../core/block/index.js'
 import { renderChild } from '../../../utils/render.js'
 import { Modal } from '../../../components/modal/index.js'
 
