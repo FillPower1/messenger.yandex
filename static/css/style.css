@@ -11,7 +11,6 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: rgba(204, 204, 204, .9);
 }
 
 #root {
@@ -226,7 +225,7 @@ body {
 .aside {
     width: 310px;
     height: 100%;
-    background: #fbfbfb;
+    background-color: rgba(251, 251, 251, 0.6);
 }
 
 .aside__header {
@@ -712,6 +711,7 @@ body {
 .messages-send__input:focus {
     padding: 8px 18px;
     border: 2px solid #1e1e1e;
+    background-color: #fff;
 }
 
 .messages-send__button {
@@ -787,7 +787,7 @@ body {
 .profile__button {
     position: absolute;
     height: calc(100% - 120px);
-    background-color: #fbfbfb;
+    background-color: rgba(251, 251, 251, 0.6);
 }
 
 .profile__button a {

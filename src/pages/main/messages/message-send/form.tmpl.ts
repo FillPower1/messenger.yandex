@@ -3,6 +3,7 @@ export default `
         <input
                 class="messages-send__input"
                 placeholder="Сообщение"
+                autocomplete="off"
                 name="message"
                 type="text"
         />

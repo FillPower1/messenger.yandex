@@ -6,6 +6,7 @@ export default `
             <input
                 class="profile-data__value profile-data__value--edit"
                 required name="{{name}}" value="{{value}}" type="{{type}}"
+                autocomplete="off"
             >
         </label>
     </div>
