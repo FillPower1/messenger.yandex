@@ -15,5 +15,5 @@ https://wonderful-joliot-c7d2a5.netlify.app/
 
 Команды:
 - `npm start` — запуск локального сервера
-- `npm dev` — режим для разработки на typescript
-- `npm compile` — компиляция .ts файлов (target)
+- `npm run dev` — режим для разработки на typescript
+- `npm run compile` — компиляция .ts файлов (target)

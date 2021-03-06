@@ -1,7 +1,7 @@
 {
     "name": "mf.messenger.praktikum.yandex",
     "version": "1.0.0",
-    "description": "Мессенджер на нативном JavaScript",
+    "description": "Мессенджер на нативном TypeScript",
     "scripts": {
         "start": "node server.js",
         "dev": "tsc --w",
