@@ -19,7 +19,8 @@ export class Aside extends Block {
                             time: '10:20',
                             shortMessage: 'Друзья, у меня для вас особенный выпуск новостей!',
                             amountMessages: 10,
-                            avatar: 'https://w7.pngwing.com/pngs/980/304/png-transparent-computer-icons-user-profile-avatar-heroes-silhouette-avatar.png'
+                            avatar:
+                                'https://w7.pngwing.com/pngs/980/304/png-transparent-computer-icons-user-profile-avatar-heroes-silhouette-avatar.png'
                         },
                         {
                             name: 'Николай',

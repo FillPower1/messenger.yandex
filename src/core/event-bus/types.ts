@@ -9,4 +9,4 @@ export type Listener = {
     [key: string]: Array<Func>
 }
 
-export type CallBackType = (...args: any) => any
+export type CallBackType<U> = (...args: U[]) => void

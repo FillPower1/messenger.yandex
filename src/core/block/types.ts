@@ -8,7 +8,7 @@ export enum Events {
     FLOW_CDR = 'flow:component-did-render'
 }
 
-export type Props = {
+export type Props<P = any> = P & {
     className: string
     events?: { [key: string]: (...args: any) => void }
     components?: Block[]

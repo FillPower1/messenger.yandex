@@ -5,7 +5,7 @@ import { render } from '../../../utils/render.js'
 import { ErrorTypes } from '../types.js'
 import template from '../template.js'
 
-export class ServerError extends Block {
+export class ServerError extends Block<ErrorTypes> {
     private static className = 'error'
 
     constructor(props: ErrorTypes) {

@@ -43,7 +43,7 @@ export class Login extends Block {
         })
     }
 
-    onSubmit(event: { preventDefault: () => void, target: HTMLFormElement }) {
+    onSubmit(event: { preventDefault: () => void; target: HTMLFormElement }) {
         event.preventDefault()
         const instance = new Validate(event.target, validationScheme)
         const isValid = instance.validateOnSubmit()

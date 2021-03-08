@@ -2,13 +2,13 @@ import { EventBus } from '../event-bus/index.js'
 
 import { Events, Props } from './types.js'
 
-export class Block {
+export class Block<P = unknown> {
     private _element: HTMLElement
-    private readonly meta: { tagName: string, props: Props }
+    private readonly meta: { tagName: string; props: Props<P> }
     eventBus: EventBus
-    props: Props
+    props: Props<P>
 
-    constructor(tagName: string = 'div', props: Props) {
+    constructor(tagName: string, props: Props<P>) {
         this.eventBus = new EventBus()
 
         this.meta = {
@@ -96,6 +96,7 @@ export class Block {
 
         this._removeEvents()
 
+        this._element.innerHTML = ''
         this._element.insertAdjacentHTML('afterbegin', block)
 
         this._addEvents()
@@ -113,7 +114,7 @@ export class Block {
 
     private makePropsProxy(props: Props) {
         return new Proxy(props, {
-            set: (target: Props, prop: string, value): boolean => {
+            set: (target, prop: string, value): boolean => {
                 const oldProps = { ...target }
                 target[prop] = value
                 this.eventBus.emit(Events.FLOW_CDU, oldProps, target)

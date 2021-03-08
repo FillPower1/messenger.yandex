@@ -12,10 +12,7 @@ export class EditPassword extends Block {
     constructor() {
         super('div', {
             className: EditPassword.className,
-            components: [
-                new ProfileButton(),
-                new Avatar()
-            ]
+            components: [new ProfileButton(), new Avatar()]
         })
     }
 
@@ -45,7 +42,7 @@ export class EditPassword extends Block {
         })
     }
 
-    onSubmit(event: { preventDefault: () => void, target: HTMLFormElement }): void {
+    onSubmit(event: { preventDefault: () => void; target: HTMLFormElement }): void {
         event.preventDefault()
         const instance = new Validate(event.target, validationScheme)
         const isValid = instance.validateOnSubmit()

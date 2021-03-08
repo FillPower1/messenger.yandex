@@ -4,7 +4,7 @@ import { templator } from '../../../../utils/templator.js'
 import template from './header.tmpl.js'
 import { HeaderTypes } from './types.js'
 
-export class Header extends Block {
+export class Header extends Block<HeaderTypes> {
     private static className = 'messages__header'
 
     constructor(props: HeaderTypes) {

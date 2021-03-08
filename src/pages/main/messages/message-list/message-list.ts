@@ -4,7 +4,7 @@ import { templator } from '../../../../utils/templator.js'
 import template from './message-list.tmpl.js'
 import { MessageListTypes } from './types.js'
 
-export class MessageList extends Block {
+export class MessageList extends Block<MessageListTypes> {
     private static className = 'messages__main'
 
     constructor(props: MessageListTypes) {

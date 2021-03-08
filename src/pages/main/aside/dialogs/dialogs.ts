@@ -4,7 +4,6 @@ import { templator } from '../../../../utils/templator.js'
 import template from './dialogs.tmpl.js'
 import { DialogsTypes } from './types.js'
 
-
 export class Dialogs extends Block {
     private static className = 'dialogs'
 

@@ -5,7 +5,7 @@ import { Validate } from '../../../utils/validate.js'
 import template from './form-fields.tmpl.js'
 import { FormFieldsTypes } from './types.js'
 
-export class FormFields extends Block {
+export class FormFields extends Block<FormFieldsTypes> {
     private static className = 'profile-data'
 
     constructor(props: FormFieldsTypes) {

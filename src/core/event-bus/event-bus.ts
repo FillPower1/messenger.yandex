@@ -7,7 +7,7 @@ export class EventBus implements IEventBus {
         this.listeners = {}
     }
 
-    on(event: string, callback: CallBackType): () => void {
+    on<U>(event: string, callback: CallBackType<U>): () => void {
         if (!(event in this.listeners)) {
             this.listeners[event] = []
         }
@@ -21,7 +21,7 @@ export class EventBus implements IEventBus {
         }
     }
 
-    emit(event: string, ...args: any): void {
+    emit<T>(event: string, ...args: T[]): void {
         this.listeners[event].forEach((listener) => {
             listener(...args)
         })

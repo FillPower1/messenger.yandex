@@ -19,37 +19,39 @@ export class Messages extends Block {
             className: Messages.className,
             components: [
                 new Header({ name: 'Андрей' }),
-                chatActive ? new Disabled() : new MessageList({
-                    messages: [
-                        {
-                            text: 'Тестовое сообщение для теста сообщений',
-                            time: '21:24'
-                        },
-                        {
-                            text: 'Тестовое сообщение для теста сообщений',
-                            time: '21:24',
-                            im: true,
-                            read: true
-                        },
-                        {
-                            text: 'Тестовое сообщение для теста сообщений',
-                            time: '21:24',
-                            im: true,
-                            read: false
-                        },
-                        {
-                            date: '19 июня'
-                        },
-                        {
-                            text: 'Тестовое сообщение для теста сообщений',
-                            time: '21:34',
-                            attach: {
-                                image: 'https://c.pxhere.com/photos/54/aa/cat_animal_nature_close_up-1106847.jpg!d'
-                            }
-                        }
-
-                    ]
-                }),
+                chatActive
+                    ? new Disabled()
+                    : new MessageList({
+                          messages: [
+                              {
+                                  text: 'Тестовое сообщение для теста сообщений',
+                                  time: '21:24'
+                              },
+                              {
+                                  text: 'Тестовое сообщение для теста сообщений',
+                                  time: '21:24',
+                                  im: true,
+                                  read: true
+                              },
+                              {
+                                  text: 'Тестовое сообщение для теста сообщений',
+                                  time: '21:24',
+                                  im: true,
+                                  read: false
+                              },
+                              {
+                                  date: '19 июня'
+                              },
+                              {
+                                  text: 'Тестовое сообщение для теста сообщений',
+                                  time: '21:34',
+                                  attach: {
+                                      image:
+                                          'https://c.pxhere.com/photos/54/aa/cat_animal_nature_close_up-1106847.jpg!d'
+                                  }
+                              }
+                          ]
+                      }),
                 new MessageSend(),
                 new Modal({
                     title: 'Добавить пользователя',

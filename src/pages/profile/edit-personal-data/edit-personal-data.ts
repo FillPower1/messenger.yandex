@@ -52,10 +52,7 @@ export class EditPersonalData extends Block {
     constructor() {
         super('div', {
             className: EditPersonalData.className,
-            components: [
-                new ProfileButton(),
-                new Avatar()
-            ]
+            components: [new ProfileButton(), new Avatar()]
         })
     }
 
@@ -72,7 +69,7 @@ export class EditPersonalData extends Block {
         })
     }
 
-    onSubmit(event: { preventDefault: () => void, target: HTMLFormElement }): void {
+    onSubmit(event: { preventDefault: () => void; target: HTMLFormElement }): void {
         event.preventDefault()
         const instance = new Validate(event.target, validationScheme)
         const isValid = instance.validateOnSubmit()
