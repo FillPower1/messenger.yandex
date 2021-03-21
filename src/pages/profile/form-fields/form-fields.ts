@@ -1,6 +1,7 @@
 import { Block } from '../../../core/block/index.js'
 import { templator } from '../../../utils/templator.js'
 import { Validate } from '../../../utils/validate.js'
+import { getErrorText } from '../../../__data__/selectors/personal-data.js'
 
 import template from './form-fields.tmpl.js'
 import { FormFieldsTypes } from './types.js'
@@ -16,6 +17,18 @@ export class FormFields extends Block<FormFieldsTypes> {
                 submit: props.onSubmit
             }
         })
+    }
+
+    componentDidMount(): void {
+        this.connectToStore(this)
+    }
+
+    mapStateToProps(store: any) {
+        const errorText = getErrorText(store)
+
+        return {
+            errorText
+        }
     }
 
     componentDidRender(): void {

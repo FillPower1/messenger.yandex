@@ -2,7 +2,7 @@ import { Block } from '../../../core/block/index.js'
 import { renderChild } from '../../../utils/render.js'
 
 import { Search } from './search/index.js'
-import { Dialogs } from './dialogs/index.js'
+import { Chats } from './chats/index.js'
 
 export class Aside extends Block {
     private static className = 'aside'
@@ -12,7 +12,7 @@ export class Aside extends Block {
             className: Aside.className,
             components: [
                 new Search(),
-                new Dialogs({
+                new Chats({
                     dialogs: [
                         {
                             name: 'Андрей',

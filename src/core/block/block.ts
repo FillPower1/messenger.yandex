@@ -1,12 +1,16 @@
 import { EventBus } from '../event-bus/index.js'
+import { Store } from '../../__data__/store.js'
 
 import { Events, Props } from './types.js'
+import { isEqual } from '../../utils/is-equal/index.js'
 
 export class Block<P = unknown> {
     private _element: HTMLElement
     private readonly meta: { tagName: string; props: Props<P> }
     eventBus: EventBus
     props: Props<P>
+    state: any
+    sub: () => void | undefined
 
     constructor(tagName: string, props: Props<P>) {
         this.eventBus = new EventBus()
@@ -20,6 +24,13 @@ export class Block<P = unknown> {
 
         this.registerEvents(this.eventBus)
         this.eventBus.emit(Events.INIT)
+        this._mapStateToProps = this._mapStateToProps.bind(this)
+    }
+
+    connectToStore(Component: Block) {
+        this.sub = Store.subscribe(() => {
+            Component.eventBus.emit(Events.FLOW_RENDER)
+        })
     }
 
     private registerEvents(eventBus: EventBus): void {
@@ -47,15 +58,30 @@ export class Block<P = unknown> {
 
     componentDidMount(oldProps = {}): void {}
 
-    private _componentDidUpdate(oldProps: any, newProps: any): void {
-        const response = this.componentDidUpdate(oldProps, newProps)
-
-        if (JSON.stringify(oldProps) !== JSON.stringify(newProps) || response) {
-            this.eventBus.emit(Events.FLOW_RENDER)
+    private _componentWillUnmount() {
+        if (this.sub) {
+            this.sub()
         }
+        this.componentWillUnmount()
     }
 
-    componentDidUpdate(oldProps: any, newProps: any) {}
+    componentWillUnmount() {}
+
+    private _componentDidUpdate(oldProps: any = {}, newProps: any = {}): void {
+        const response = this.componentDidUpdate(oldProps, newProps)
+
+        if (!response) {
+            return
+        } else if (isEqual(oldProps, newProps)) {
+            return
+        }
+
+        this.eventBus.emit(Events.FLOW_RENDER)
+    }
+
+    componentDidUpdate(oldProps?: any, newProps?: any) {
+        return false
+    }
 
     private _componentDidRender(): void {
         this.componentDidRender()
@@ -75,7 +101,7 @@ export class Block<P = unknown> {
         const { events = {} } = this.props
 
         Object.keys(events).forEach((eventName) => {
-            this._element.addEventListener(eventName, events[eventName])
+            this._element?.addEventListener(eventName, events[eventName])
         })
     }
 
@@ -83,7 +109,7 @@ export class Block<P = unknown> {
         const { events = {} } = this.props
 
         Object.keys(events).forEach((eventName) => {
-            this._element.removeEventListener(eventName, events[eventName])
+            this._element?.removeEventListener(eventName, events[eventName])
         })
     }
 
@@ -91,7 +117,16 @@ export class Block<P = unknown> {
         return this._element
     }
 
+    private _mapStateToProps() {
+        const props = this.mapStateToProps(Store.getState(), this.props)
+        this.setProps(props)
+    }
+
+    mapStateToProps(store: any, ownProps?: any) {}
+
     private _render(): void {
+        this._mapStateToProps()
+
         const block = this.render()
 
         this._removeEvents()
@@ -136,6 +171,7 @@ export class Block<P = unknown> {
     }
 
     hide(): void {
+        this._componentWillUnmount()
         this.getContent().classList.add('hidden')
     }
 }

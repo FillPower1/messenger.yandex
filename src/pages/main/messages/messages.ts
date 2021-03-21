@@ -1,6 +1,5 @@
 import { Block } from '../../../core/block/index.js'
 import { renderChild } from '../../../utils/render.js'
-import { Modal } from '../../../components/modal/index.js'
 
 import { Header } from './header/index.js'
 import { Disabled } from './disabled/index.js'
@@ -52,17 +51,7 @@ export class Messages extends Block {
                               }
                           ]
                       }),
-                new MessageSend(),
-                new Modal({
-                    title: 'Добавить пользователя',
-                    placeholder: 'Логин',
-                    buttonName: 'Добавить'
-                }),
-                new Modal({
-                    title: 'Удалить пользователя',
-                    placeholder: 'Логин',
-                    buttonName: 'Удалить'
-                })
+                new MessageSend()
             ]
         })
     }

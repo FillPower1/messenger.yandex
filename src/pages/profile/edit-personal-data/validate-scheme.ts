@@ -37,12 +37,7 @@ export const validationScheme = {
         ]
     },
     display_name: {
-        rules: [
-            {
-                type: 'required',
-                prompt: 'Введите никнейм'
-            },
-        ]
+        rules: []
     },
     phone: {
         pattern: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,

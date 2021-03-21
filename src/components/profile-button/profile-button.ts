@@ -8,9 +8,11 @@ export class ProfileButton extends Block {
 
     constructor() {
         super('div', {
-            className: ProfileButton.className,
+            className: ProfileButton.className
         })
     }
+
+    componentDidMount() {}
 
     render() {
         return templator(template)()

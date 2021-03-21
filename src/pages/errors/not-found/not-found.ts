@@ -1,6 +1,5 @@
 import { Block } from '../../../core/block/index.js'
 import { templator } from '../../../utils/templator.js'
-import { render } from '../../../utils/render.js'
 
 import { ErrorTypes } from '../types.js'
 import template from '../template.js'
@@ -10,8 +9,10 @@ export class NotFound extends Block<ErrorTypes> {
 
     constructor(props: ErrorTypes) {
         super('div', {
-            ...props,
-            className: NotFound.className
+            className: NotFound.className,
+            title: '404',
+            description: 'Мы уже фиксим',
+            link: 'Назад к чатам'
         })
     }
 
@@ -19,11 +20,3 @@ export class NotFound extends Block<ErrorTypes> {
         return templator(template)(this.props)
     }
 }
-
-const page = new NotFound({
-    title: '404',
-    description: 'Мы уже фиксим',
-    link: 'Назад к чатам'
-})
-
-render('#root', page)

@@ -7,8 +7,11 @@ export default `
         </label>
     </div>
 {{/each}}
+{{#if textError}}
+    <div class="error-field auth-error">{{textError}}</div>
+{{/if}}
 <div class="form__actions">
-    <button class="form__button" type="submit">{{buttons.text}}</button>
-    <a class="form__link" href="{{buttons.href}}">{{buttons.link}}</a>
+    <button class="form__button" type="submit">{{text}}</button>
+    <a class="form__link" href="{{href}}">{{link}}</a>
 </div>
 `

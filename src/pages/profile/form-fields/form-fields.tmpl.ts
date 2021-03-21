@@ -11,5 +11,6 @@ export default `
         </label>
     </div>
 {{/each}}
+{{#if errorText}}<div class="error-field">{{errorText}}</div>{{/if}}
 <button class="profile-data__button" type="submit">Сохранить</button>
 `

@@ -21,7 +21,7 @@ export class EventBus implements IEventBus {
         }
     }
 
-    emit<T>(event: string, ...args: T[]): void {
+    emit<T = any>(event: string, ...args: T[]): void {
         this.listeners[event].forEach((listener) => {
             listener(...args)
         })

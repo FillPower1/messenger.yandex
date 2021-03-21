@@ -16,7 +16,22 @@ export function renderChild(
     components.forEach((component) => parent.appendChild(component.getContent()))
 }
 
-export function render(root: string, page: Block): void {
+type DomType = {
+    render(page: Block): void
+    remove(): void
+}
+
+export function dom(root: string): DomType {
     const container = document.querySelector(root)
-    container?.appendChild(page.getContent())
+
+    return {
+        render(page: Block) {
+            container?.appendChild(page.getContent())
+        },
+        remove() {
+            if (container) {
+                container.innerHTML = ''
+            }
+        }
+    }
 }

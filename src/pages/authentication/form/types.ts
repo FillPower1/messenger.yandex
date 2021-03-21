@@ -5,13 +5,11 @@ import { validationScheme as validationLoginScheme } from '../login/validate-sch
 export type ValidationScheme = typeof validationLoginScheme | typeof validationRegisterScheme
 
 export type FormType = {
-    title: string,
-    buttons: {
-        text: string,
-        href: string,
-        link: string,
-    },
-    items: Array<{ name: string, placeholder: string, type: string }>
-    onSubmit: (event: { preventDefault: () => void, target: HTMLFormElement }) => void,
+    title: string
+    text: string
+    href: string
+    link: string
+    items: Array<{ name: string; placeholder: string; type: string }>
+    onSubmit: (event: { preventDefault: () => void; target: HTMLFormElement }) => void
     validationScheme: ValidationScheme
 }

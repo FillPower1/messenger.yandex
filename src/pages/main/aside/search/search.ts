@@ -1,5 +1,7 @@
 import { Block } from '../../../../core/block/index.js'
 import { templator } from '../../../../utils/templator.js'
+import { CreateChat } from '../create-chat/create-chat.js'
+import { renderChild } from '../../../../utils/render.js'
 
 import template from './search.tmpl.js'
 
@@ -8,8 +10,13 @@ export class Search extends Block {
 
     constructor() {
         super('div', {
-            className: Search.className
+            className: Search.className,
+            components: [new CreateChat()]
         })
+    }
+
+    componentDidRender(): void {
+        renderChild(this.element, this.props.components)
     }
 
     render(): string {

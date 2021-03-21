@@ -1,5 +1,5 @@
 export default `
-<h2 class="profile__name">{{name}}</h2>
+<h2 class="profile__name">{{first_name}}</h2>
 <ul class="profile-data">
 {{#each items}}
     <li class="profile-data__item">
@@ -9,6 +9,7 @@ export default `
 {{/each}}
 </ul>
 {{#each links}}
-    <a href="{{href}}" class="profile__link {{className}}">{{linkName}}</a>
+    <a href="{{href}}" class="profile__link {{className}}" id="{{id}}">{{linkName}}</a>
 {{/each}}
+<a class="profile__link profile__link--theme-danger" id="{{link.id}}">{{link.linkName}}</a>
 `
