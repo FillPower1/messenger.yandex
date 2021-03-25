@@ -12,27 +12,13 @@ export class Aside extends Block {
             className: Aside.className,
             components: [
                 new Search(),
-                new Chats({
-                    dialogs: [
-                        {
-                            name: 'Андрей',
-                            time: '10:20',
-                            shortMessage: 'Друзья, у меня для вас особенный выпуск новостей!',
-                            amountMessages: 10,
-                            avatar:
-                                'https://w7.pngwing.com/pngs/980/304/png-transparent-computer-icons-user-profile-avatar-heroes-silhouette-avatar.png'
-                        },
-                        {
-                            name: 'Николай',
-                            time: '00:20',
-                            shortMessage: 'Друзья, у меня для вас особенный выпуск новостей!',
-                            amountMessages: 0,
-                            active: true
-                        }
-                    ]
-                })
+                new Chats()
             ]
         })
+    }
+
+    componentWillUnmount() {
+        this.props.components?.forEach((Component) => Component.hide())
     }
 
     componentDidRender(): void {

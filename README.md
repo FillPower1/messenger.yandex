@@ -7,7 +7,12 @@ https://wonderful-joliot-c7d2a5.netlify.app/
 
 ## Описание
 
-Мессенджер на TypeScript. 
+Мессенджер. SPA приложение на TypeScript. 
+
+## Инструменты
+TypeScript,
+Chai & Mocha (использовал мало),
+postcss (postcss-import, postcss-nested)
 
 ## Запуск
 
@@ -17,3 +22,5 @@ https://wonderful-joliot-c7d2a5.netlify.app/
 - `npm start` — запуск локального сервера
 - `npm run dev` — режим для разработки на typescript
 - `npm run compile` — компиляция .ts файлов (target)
+- `npm run test` — запуск тестов
+- `npm run css` — сборка css файлов с помощью postcss

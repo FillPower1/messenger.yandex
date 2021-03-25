@@ -1,22 +1,20 @@
 import { Block } from '../../../../core/block/index.js'
-import { renderChild } from '../../../../utils/render.js'
 import { templator } from '../../../../utils/templator.js'
-import { dispatch } from '../../../../__data__/store.js'
-import * as selectors from '../../../../__data__/selectors/personal-data.js'
-import { logout as logoutAction } from '../../../../__data__/actions/auth.js'
-import { getPersonalData } from '../../../../__data__/actions/personal-data.js'
+import { PersonalDataController } from '../../../../__data__/controllers/personal-data.js'
+import { AuthController } from '../../../../__data__/controllers/auth.js'
+import { Link } from '../../../../utils/link.js'
 
 import template from './info.tmpl.js'
 
-const links = [
+const LINKS = [
     {
         linkName: 'Изменить данные',
-        href: '#profile/edit',
+        href: '/profile-edit',
         className: 'profile__link--theme-info'
     },
     {
         linkName: 'Изменить пароль',
-        href: '#profile/password/edit',
+        href: '/password-edit',
         className: 'profile__link--theme-info'
     }
 ]
@@ -31,30 +29,30 @@ export class Info extends Block {
     }
 
     componentDidMount(): void {
-        this.connectToStore(this)
-        dispatch(getPersonalData())
-    }
-
-    mapStateToProps(store: any) {
-        const personalData = selectors.getPersonalData(store)
-
-        return {
-            ...personalData
-        }
+        PersonalDataController.profileInfoSubscribe(this)
+        PersonalDataController.getPersonalData()
     }
 
     componentDidRender() {
-        const logout = this.element.querySelector('#logout')
-        logout?.addEventListener('click', () => dispatch(logoutAction()))
+        const logout: HTMLButtonElement | null = this.element.querySelector('#logout')
 
-        renderChild(this.element, this.props.components, true)
+        if (logout) {
+            logout.onclick = () => AuthController.logout()
+        }
+
+        const links = this.element.querySelectorAll('a')
+        links.forEach((link) => Link(link))
     }
 
     render() {
-        const { first_name, email, phone, display_name, login } = this.props
+        const {
+            first_name, email, phone,
+            display_name, login, avatar
+        } = this.state.get('personalData', {})
 
         return templator(template)({
             first_name,
+            avatar,
             items: [
                 {
                     description: 'Имя',
@@ -77,9 +75,10 @@ export class Info extends Block {
                     value: phone
                 }
             ],
-            links,
+            links: LINKS,
             link: {
                 linkName: 'Выйти',
+                href: '/login',
                 id: 'logout'
             }
         })

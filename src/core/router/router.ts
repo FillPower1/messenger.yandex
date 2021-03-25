@@ -1,10 +1,10 @@
 import { Route } from './route.js'
 
-class Router {
+export class Router {
     private static __instance: Router
     private readonly _rootQuery: string
     private _currentRoute: Route | null
-    private _notFoundRoute = '#not-found'
+    private _notFoundRoute = '/not-found'
     history: History
     routes: Route[]
 
@@ -29,14 +29,14 @@ class Router {
     }
 
     start() {
-        window.addEventListener('hashchange', (event: any) => {
-            this._onRoute(event.currentTarget.location.hash)
-        })
+        window.onpopstate = (event: any) => {
+            this._onRoute(event.currentTarget.location.pathname)
+        }
 
-        this._onRoute(window.location.hash)
+        this._onRoute(window.location.pathname)
     }
 
-    private _onRoute(pathname: string) {
+    _onRoute(pathname: string) {
         const route = this.getRoute(pathname)
 
         if (!route) {
@@ -68,5 +68,3 @@ class Router {
         return this.routes.find((route) => route.match(pathname))
     }
 }
-
-export default Router

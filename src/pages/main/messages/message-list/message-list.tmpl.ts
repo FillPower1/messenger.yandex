@@ -1,7 +1,7 @@
 // TODO: Необходимо отрефакторить после подключения webpack!
 export default `
-<div class="messages__list">
-    {{#each messages}}
+{{#each messages}}
+    <div class="messages__list">
         {{#if date}}
             <li class="messages__date">19 июня</li>
         {{else}}
@@ -67,6 +67,6 @@ export default `
                 </li>
             {{/if}}
         {{/if}}
-    {{/each}}
-</div>
+        </div>
+{{/each}}
 `

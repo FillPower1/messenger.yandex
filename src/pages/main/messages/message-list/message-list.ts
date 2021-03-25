@@ -15,6 +15,8 @@ export class MessageList extends Block<MessageListTypes> {
     }
 
     render(): string {
-        return templator(template)(this.props)
+        return templator(template)({
+            ...this.props
+        })
     }
 }

@@ -1,19 +1,19 @@
 import { EventBus } from '../event-bus/index.js'
-import { Store } from '../../__data__/store.js'
 
 import { Events, Props } from './types.js'
-import { isEqual } from '../../utils/is-equal/index.js'
+import { State } from '../../__data__/state.js'
 
 export class Block<P = unknown> {
     private _element: HTMLElement
     private readonly meta: { tagName: string; props: Props<P> }
     eventBus: EventBus
     props: Props<P>
-    state: any
-    sub: () => void | undefined
+    state: State
 
     constructor(tagName: string, props: Props<P>) {
         this.eventBus = new EventBus()
+
+        this.state = new State()
 
         this.meta = {
             tagName,
@@ -24,13 +24,6 @@ export class Block<P = unknown> {
 
         this.registerEvents(this.eventBus)
         this.eventBus.emit(Events.INIT)
-        this._mapStateToProps = this._mapStateToProps.bind(this)
-    }
-
-    connectToStore(Component: Block) {
-        this.sub = Store.subscribe(() => {
-            Component.eventBus.emit(Events.FLOW_RENDER)
-        })
     }
 
     private registerEvents(eventBus: EventBus): void {
@@ -56,12 +49,9 @@ export class Block<P = unknown> {
         this.eventBus.emit(Events.FLOW_RENDER)
     }
 
-    componentDidMount(oldProps = {}): void {}
+    componentDidMount(oldProps: Props = {}): void {}
 
     private _componentWillUnmount() {
-        if (this.sub) {
-            this.sub()
-        }
         this.componentWillUnmount()
     }
 
@@ -69,14 +59,9 @@ export class Block<P = unknown> {
 
     private _componentDidUpdate(oldProps: any = {}, newProps: any = {}): void {
         const response = this.componentDidUpdate(oldProps, newProps)
-
-        if (!response) {
-            return
-        } else if (isEqual(oldProps, newProps)) {
-            return
+        if (response) {
+            this.eventBus.emit(Events.FLOW_RENDER)
         }
-
-        this.eventBus.emit(Events.FLOW_RENDER)
     }
 
     componentDidUpdate(oldProps?: any, newProps?: any) {
@@ -117,16 +102,7 @@ export class Block<P = unknown> {
         return this._element
     }
 
-    private _mapStateToProps() {
-        const props = this.mapStateToProps(Store.getState(), this.props)
-        this.setProps(props)
-    }
-
-    mapStateToProps(store: any, ownProps?: any) {}
-
     private _render(): void {
-        this._mapStateToProps()
-
         const block = this.render()
 
         this._removeEvents()

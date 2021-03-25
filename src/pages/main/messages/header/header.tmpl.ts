@@ -5,7 +5,7 @@ export default `
     {{else}}
         <span class="messages__info-avatar"></span>
     {{/if}}
-    <span class="messages__info-title">{{name}}</span>
+    <span class="messages__info-title">{{title}}</span>
 </div>
 <button class="dropdown__btn {{#if active}} dropdown__btn--active {{/if}}">
     <span class="dropdown__btn-icon"></span>
@@ -13,7 +13,7 @@ export default `
     <span class="dropdown__btn-icon"></span>
 </button>
 <div class="dropdown-menu">
-    <button class="dropdown-menu__item">
+    <button class="dropdown-menu__item" data-modal="#add-user" data-method="add">
         <div class="dropdown-menu__icon">
             <svg
                 width="12"
@@ -42,7 +42,7 @@ export default `
         </div>
         <p class="dropdown-menu__text">Добавить пользователя</p>
     </button>
-    <button class="dropdown-menu__item">
+    <button class="dropdown-menu__item" data-modal="#delete-user" data-method="delete">
         <div class="dropdown-menu__icon">
             <svg
                 width="16"

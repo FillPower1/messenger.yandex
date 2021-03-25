@@ -22,7 +22,10 @@ export class Route {
 
     unmount() {
         this._block.hide()
-        this._block.props.components?.forEach((Component) => Component.hide())
+
+        this._block.props.components?.forEach((Component) => {
+            Component.hide()
+        })
     }
 
     leave() {

@@ -1,6 +1,10 @@
 export default `
-{{#each dialogs}}
-    <li class="dialog dialogs__item {{#if active}}dialogs__item--active{{/if}}">
+{{#each chats}}
+    <li
+        class="dialog dialogs__item{{#if active}} dialogs__item--active{{/if}}"
+         data-created="{{created_by}}"
+         id="{{id}}"
+    >
         {{#if avatar}}
             <img class="dialog__avatar" src="{{avatar}}" alt="">
         {{else}}
@@ -8,7 +12,7 @@ export default `
         {{/if}}
         <div class="dialog__wrapper">
             <div class="dialog__message">
-                <span class="dialog__peer">{{name}}</span>
+                <span class="dialog__peer">{{title}}</span>
                 <span class="dialog__short-message">
                     {{shortMessage}}
                 </span>

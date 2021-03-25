@@ -1,17 +1,19 @@
 import { Block } from '../../../../core/block/index.js'
 import { templator } from '../../../../utils/templator.js'
-import { dispatch } from '../../../../__data__/store.js'
-import { createChat } from '../../../../__data__/actions/chats.js'
 
 import template from './create-chat.tmpl.js'
+import { ChatsController } from '../../../../__data__/controllers/chats.js'
 
 export class CreateChat extends Block {
     private static className = 'aside__create'
+    modal: HTMLElement | null
 
     constructor() {
         super('div', {
             className: CreateChat.className
         })
+
+        this.handleButtonClick = this.handleButtonClick.bind(this)
     }
 
     componentDidMount(): void {
@@ -23,31 +25,41 @@ export class CreateChat extends Block {
     }
 
     componentDidRender(): void {
-        const button = this.element.querySelector('button')
+        const button = this.element.querySelector('button');
 
-        button?.addEventListener('click', this.handleButtonClick)
+        (button as HTMLButtonElement).onclick = () => {
+            this.modal = document.querySelector('#create-chat')
+            this.modal?.closest('.modal')?.classList.add('modal--active');
+
+            (this.modal as HTMLFormElement).onsubmit = this.handleButtonClick
+        }
     }
 
-    // TODO: довести до ума/доработать
-    handleButtonClick() {
-        const modal = document.querySelector('#create-chat')
-        modal?.closest('.modal')?.classList.add('modal--active')
+    async handleButtonClick(event: Event) {
+        event.preventDefault()
 
-        modal?.addEventListener('submit', (event) => {
-            event.preventDefault()
-            const input = modal.querySelector('input')
-            dispatch(createChat({ title: input?.value }))
-            modal?.closest('.modal')?.classList.remove('modal--active')
-        })
+        const input = this.modal?.querySelector('input')
+        const errorField = this.modal?.querySelector('.form__error')
+
+        const errorText = await ChatsController.createChat({ title: input?.value })
+
+        if (errorText && errorText.reason) {
+            (errorField as HTMLElement).textContent = errorText.reason
+            return
+        }
+
+        (input as HTMLInputElement).value = '';
+        (errorField as HTMLElement).textContent = ''
+        this.modal?.closest('.modal')?.classList.remove('modal--active')
     }
 
-    handleWindowClick(event: any) {
+    handleWindowClick(event: { target: any }) {
         if (event.target?.classList.contains('modal')) {
             event.target?.classList.remove('modal--active')
         }
     }
 
     render(): string {
-        return templator(template)(this.props)
+        return templator(template)()
     }
 }

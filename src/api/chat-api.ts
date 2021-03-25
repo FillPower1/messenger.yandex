@@ -4,13 +4,13 @@ import { BASE_API_URL } from '../constants.js'
 import { BaseAPI } from './base-api.js'
 
 const CHATS_URL = '/chats'
+const CHATS_USER_URL = '/chats/users'
 
 const chatAPIInstance = new HTTP(BASE_API_URL)
 
 export class ChatAPI extends BaseAPI {
     create(data: any) {
         return chatAPIInstance.post(CHATS_URL, {
-            withCredentials: true,
             data: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
@@ -19,8 +19,30 @@ export class ChatAPI extends BaseAPI {
     }
 
     request() {
-        return chatAPIInstance.get(CHATS_URL, {
-            withCredentials: true
+        return chatAPIInstance.get(CHATS_URL)
+    }
+
+    update(user: string, chatId: string) {
+        return chatAPIInstance.put(CHATS_USER_URL, {
+            data: JSON.stringify({
+                users: [user],
+                chatId
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+
+    delete(user: string, chatId: string) {
+        return chatAPIInstance.delete(CHATS_USER_URL, {
+            data: JSON.stringify({
+                users: [user],
+                chatId
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
     }
 }

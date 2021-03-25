@@ -9,12 +9,24 @@ const LOGOUT_URL = '/auth/logout'
 
 const authAPIInstance = new HTTP(BASE_API_URL)
 
+export type LoginForm = {
+    login: string,
+    password: string
+}
+
+export type RegisterForm = {
+    emails: string,
+    login: string,
+    first_name: string,
+    second_name: string,
+    password: string
+}
+
 export class AuthAPI extends BaseAPI {
-    async create(data: any) {
+    async create(form: RegisterForm) {
         try {
             const { response } = await authAPIInstance.post(REGISTER_URL, {
-                withCredentials: true,
-                data: JSON.stringify(data),
+                data: JSON.stringify(form),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -26,11 +38,10 @@ export class AuthAPI extends BaseAPI {
         }
     }
 
-    async request(data: any) {
+    async request(form: LoginForm) {
         try {
             const { response } = await authAPIInstance.post(LOGIN_URL, {
-                withCredentials: true,
-                data: JSON.stringify(data),
+                data: JSON.stringify(form),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -44,9 +55,7 @@ export class AuthAPI extends BaseAPI {
 
     async logout() {
         try {
-            const { response } = await authAPIInstance.post(LOGOUT_URL, {
-                withCredentials: true
-            })
+            const { response } = await authAPIInstance.post(LOGOUT_URL)
 
             return response
         } catch (error) {

@@ -1,14 +1,12 @@
 import { BASE_URL } from '../../constants.js'
 import { Block } from '../../core/block/block.js'
 import { templator } from '../../utils/templator.js'
-import { getAvatar } from '../../__data__/selectors/personal-data.js'
+import { PersonalDataController } from '../../__data__/controllers/personal-data.js'
 
 import template from './avatar.tmpl.js'
 
 export class Avatar extends Block {
     private static className = 'profile__avatar'
-    private static modalClass = 'modal'
-    private static modalActiveClass = 'modal--active'
     private modal: HTMLDivElement | null
 
     constructor(props?: any) {
@@ -21,7 +19,7 @@ export class Avatar extends Block {
     }
 
     componentDidMount(): void {
-        this.connectToStore(this)
+        PersonalDataController.avatarSubscribe(this)
         window.addEventListener('click', this.handleWindowClick)
     }
 
@@ -31,34 +29,24 @@ export class Avatar extends Block {
 
     componentDidRender(): void {
         this.element.addEventListener('click', () => {
-            this.modal = document.querySelector(`.${Avatar.modalClass}`)
-            this.modal?.classList.add(Avatar.modalActiveClass)
+            this.modal = document.querySelector('.modal')
+            this.modal?.classList.add('modal--active')
         })
     }
 
     handleWindowClick(event: any) {
-        if (event.target?.classList.contains(Avatar.modalClass)) {
-            event.target?.classList.remove(Avatar.modalActiveClass)
+        if (event.target?.classList.contains('modal')) {
+            event.target?.classList.remove('modal--active')
         }
-    }
-
-    mapStateToProps(store: any, ownProps?: any) {
-        const avatar = getAvatar(store)
-
-        return {
-            avatar
-        }
-    }
-
-    componentDidUpdate(oldProps?: any, newProps?: any): boolean {
-        return oldProps !== newProps;
     }
 
     render() {
-        this.modal?.classList.remove(Avatar.modalActiveClass)
+        this.modal?.classList.remove('modal--active')
 
         return templator(template)({
             baseUrl: BASE_URL,
+            showBg: true,
+            avatar: this.state.get('personalData.avatar', null),
             ...this.props
         })
     }

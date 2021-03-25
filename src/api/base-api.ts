@@ -7,11 +7,11 @@ export class BaseAPI {
         throw new Error('Not implemented')
     }
 
-    update(data?: any) {
+    update(...data: any) {
         throw new Error('Not implemented')
     }
 
-    delete(data?: any) {
+    delete(...data: any) {
         throw new Error('Not implemented')
     }
 }

@@ -1,16 +1,16 @@
 import { Block } from '../../../core/block/index.js'
 import { renderChild } from '../../../utils/render.js'
+import { templator } from '../../../utils/templator.js'
 import { ProfileButton } from '../../../components/profile-button/index.js'
 import { Avatar } from '../../../components/avatar/index.js'
-import { FormFields } from '../form-fields/index.js'
 import { Validate } from '../../../utils/validate.js'
 import { validationScheme } from './validate-scheme.js'
-import { getFormData } from '../../authentication/get-form-data.js'
-import { dispatch } from '../../../__data__/store.js'
-import { changePassword, resetPasswordStatus } from '../../../__data__/actions/personal-data.js'
-import { getPasswordChangeStatus } from '../../../__data__/selectors/personal-data.js'
-import { getIsAuthorized } from '../../../__data__/selectors/auth.js'
-import Router from '../../../core/router/router.js'
+import { getFormData } from '../../auth/get-form-data.js'
+import { EventType } from '../../auth/login/types.js'
+import { PersonalDataController } from '../../../__data__/controllers/personal-data.js'
+import { validateProfileForm } from '../validate-form.js'
+
+import template from './edit-password.tmpl.js'
 
 const items = [
     {
@@ -29,59 +29,47 @@ const items = [
 
 export class EditPassword extends Block {
     private static className = 'profile'
+    passwordEditForm: HTMLFormElement | null
 
     constructor() {
         super('div', {
             className: EditPassword.className,
-            components: [
-                new ProfileButton(),
-                new Avatar(),
-                new FormFields({
-                    items,
-                    onSubmit: (event: { preventDefault: () => void; target: HTMLFormElement }) => {
-                        event.preventDefault()
-                        const instance = new Validate(event.target, validationScheme)
-                        const isValid = instance.validateOnSubmit()
-
-                        if (!isValid) {
-                            return
-                        }
-
-                        const passwordData = getFormData(items, event.target)
-                        dispatch(changePassword(passwordData))
-                    },
-                    validationScheme
-                })
-            ]
+            components: [new ProfileButton(), new Avatar({ showBg: false })]
         })
     }
 
-    componentDidMount(): void {
-        this.connectToStore(this)
-    }
-
-    mapStateToProps(store: any) {
-        const status = getPasswordChangeStatus(store)
-        const isAuthorized = getIsAuthorized(store)
-
-        return {
-            status,
-            isAuthorized
-        }
+    componentDidMount() {
+        PersonalDataController.changePasswordSubscribe(this)
+        PersonalDataController.getPersonalData()
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
     componentDidRender() {
-        renderChild(this.element, this.props.components)
+        this.passwordEditForm = this.element.querySelector('.profile-data')
+        validateProfileForm(this.element, validationScheme, this.onSubmit)
+
+        renderChild(this.element, this.props.components, true)
+    }
+
+    onSubmit(event: EventType | any): void {
+        event.preventDefault()
+        const instance = new Validate(<HTMLFormElement>this.passwordEditForm, validationScheme)
+        const isValid = instance.validateOnSubmit()
+
+        if (!isValid) {
+            return
+        }
+
+        const passwordData = getFormData(items, event.target)
+        PersonalDataController.changePassword(passwordData)
     }
 
     render() {
-        const { isAuthorized, status } = this.props
+        const errorText = this.state.get('personalData.errorText', '')
 
-        if (status || !isAuthorized) {
-            new Router().back()
-            dispatch(resetPasswordStatus())
-        }
-
-        return ''
+        return templator(template)({
+            items,
+            errorText
+        })
     }
 }

@@ -1,0 +1,47 @@
+.profile__avatar {
+    position: relative;
+    display: block;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.profile__avatar:hover svg circle,
+.profile__avatar:hover svg path {
+    fill: rgba(0, 0, 0, 0.6);
+}
+
+.profile__avatar:hover .profile__avatar-bg {
+    display: flex;
+}
+
+.profile__avatar-bg {
+    display: none;
+    position: absolute;
+    top: 0;
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 14px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile__avatar-bg span {
+    width: 64px;
+    text-align: center;
+}
+
+.profile__avatar img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}

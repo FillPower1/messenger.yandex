@@ -65,14 +65,14 @@ export class HTTP {
     }
 
     request(url: string, options: Options = { method: Methods.GET }): Promise<XMLHttpRequest> {
-        const { method, data, headers = {}, timeout = 5000, withCredentials = false } = options
+        const { method, data, headers = {}, timeout = 5000 } = options
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest()
 
             xhr.open(method, `${this.baseUrl}${url}`)
             xhr.timeout = timeout
-            xhr.withCredentials = withCredentials
+            xhr.withCredentials = true
 
             Object.entries(headers).forEach(([key, value]) => xhr.setRequestHeader(key, value))
 

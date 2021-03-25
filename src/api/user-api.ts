@@ -10,12 +10,24 @@ const USER_AVATAR_URL = '/user/profile/avatar'
 
 const userAPIInstance = new HTTP(BASE_API_URL)
 
+export type PersonalData = {
+    email: string,
+    login: string,
+    first_name: string,
+    second_name: string,
+    display_name: string,
+    phone: string
+}
+
+export type Password = {
+    oldPassword: string,
+    newPassword: string
+}
+
 export class UserAPI extends BaseAPI {
     async request() {
         try {
-            const { response } = await userAPIInstance.get(USER_URL, {
-                withCredentials: true
-            })
+            const { response } = await userAPIInstance.get(USER_URL)
 
             return JSON.parse(response)
         } catch (error) {
@@ -23,10 +35,9 @@ export class UserAPI extends BaseAPI {
         }
     }
 
-    async updatePersonalData(data: any) {
+    async updatePersonalData(data: PersonalData) {
         try {
             const { response } = await userAPIInstance.put(USER_PROFILE_URL, {
-                withCredentials: true,
                 data: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,10 +49,9 @@ export class UserAPI extends BaseAPI {
         }
     }
 
-    async updatePassword(data: any) {
+    async updatePassword(data: Password) {
         try {
             const { response } = await userAPIInstance.put(USER_PASSWORD_URL, {
-                withCredentials: true,
                 data: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json'
@@ -54,11 +64,13 @@ export class UserAPI extends BaseAPI {
         }
     }
 
-    async uploadAvatar(data: any) {
+    async uploadAvatar(avatar: File) {
+        const formData = new FormData()
+        formData.append('avatar', avatar)
+
         try {
             const { response } = await userAPIInstance.put(USER_AVATAR_URL, {
-                withCredentials: true,
-                data: new FormData(data)
+                data: formData
             })
 
             return JSON.parse(response)

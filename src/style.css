@@ -1,0 +1,11 @@
+@import './scaffolding.css';
+@import './pages/errors/style.css';
+@import './pages/auth/form/style.css';
+@import './components/modal/style.css';
+@import './pages/main/style.css';
+@import './pages/main/aside/style.css';
+@import './pages/main/aside/chats/style.css';
+@import './pages/main/messages/style.css';
+@import './pages/main/messages/header/style.css';
+@import './pages/main/messages/message-send/style.css';
+@import './pages/profile/style.css';

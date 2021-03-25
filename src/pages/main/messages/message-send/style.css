@@ -1,0 +1,111 @@
+.messages-send {
+    position: relative;
+    padding: 10px 20px;
+}
+
+.messages-send::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    content: '';
+    width: calc(100% - 40px);
+    height: 1px;
+    background-color: #eaeaea;
+}
+
+.messages-send__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.messages-send__attach {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.messages-send__attach:hover > svg path {
+    fill: #08a652;
+}
+
+.messages-send__label {
+    width: 100%;
+    margin-right: 10px;
+}
+
+.messages-send__input {
+    width: 100%;
+    border-radius: 30px;
+    background-color: #efefef;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+}
+
+.messages-send__input:focus {
+    padding: 8px 18px;
+    border: 2px solid #1e1e1e;
+    background-color: #fff;
+}
+
+.messages-send__button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+    padding: 0;
+}
+
+.messages-send__button:hover svg circle {
+    fill: #34b76f;
+}
+
+.attach {
+    position: relative;
+}
+
+.attach-list {
+    display: none;
+    position: absolute;
+    top: -152px;
+    width: 162px;
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+}
+
+.attach-list--active {
+    display: block;
+}
+
+.attach-list__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.attach-list__item:hover {
+    background-color: #f5f5f5;
+}
+
+.attach-list__item:not(:last-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.attach-list__item:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.attach-list__text {
+    font-size: 12px;
+    line-height: 14px;
+    color: #1e1e1e;
+    margin-left: 15px;
+}

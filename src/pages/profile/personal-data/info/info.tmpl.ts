@@ -11,5 +11,5 @@ export default `
 {{#each links}}
     <a href="{{href}}" class="profile__link {{className}}" id="{{id}}">{{linkName}}</a>
 {{/each}}
-<a class="profile__link profile__link--theme-danger" id="{{link.id}}">{{link.linkName}}</a>
+<button class="profile__link-btn profile__link--theme-danger" id="{{link.id}}">{{link.linkName}}</button>
 `

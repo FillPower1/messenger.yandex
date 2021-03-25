@@ -1,5 +1,6 @@
 import { Block } from '../../../core/block/index.js'
 import { templator } from '../../../utils/templator.js'
+import { Link } from '../../../utils/link.js'
 
 import { ErrorTypes } from '../types.js'
 import template from '../template.js'
@@ -14,6 +15,10 @@ export class ServerError extends Block<ErrorTypes> {
             description: 'Мы уже фиксим',
             link: 'Назад к чатам'
         })
+    }
+
+    componentDidRender(): void {
+        Link(this.element.querySelector('a'))
     }
 
     render() {
