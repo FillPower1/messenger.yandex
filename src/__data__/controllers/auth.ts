@@ -68,15 +68,15 @@ export class AuthController {
                     return
                 }
 
-                new Router().go(Routes.Main)
-                form.reset()
-
                 state.set('auth', {
                     isAuthorized: true,
                     textError: ''
                 })
 
                 localStorage.setItem('auth', JSON.stringify(state.get('auth')))
+                new Router().go(Routes.Main)
+                form.reset()
+
             })
             .catch((err) => {
                 console.error(err)
