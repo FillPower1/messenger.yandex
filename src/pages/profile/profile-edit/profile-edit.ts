@@ -1,7 +1,7 @@
 import { Block } from '../../../core/block/index.js'
 import { renderChild } from '../../../utils/render.js'
 import { templator } from '../../../utils/templator.js'
-import { Validate } from '../../../utils/validate.js'
+import { Validate } from '../../../utils/validate/validate.js'
 import { ProfileButton } from '../../../components/profile-button/index.js'
 import { Avatar } from '../../../components/avatar/index.js'
 import { EventType } from '../../auth/login/types.js'

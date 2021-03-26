@@ -1,8 +1,6 @@
 import { HTTP } from '../utils/http/index.js'
 import { BASE_API_URL } from '../constants.js'
 
-import { BaseAPI } from './base-api.js'
-
 const USER_URL = '/auth/user'
 const USER_PROFILE_URL = '/user/profile'
 const USER_PASSWORD_URL = '/user/password'
@@ -24,7 +22,7 @@ export type Password = {
     newPassword: string
 }
 
-export class UserAPI extends BaseAPI {
+export class UserAPI {
     async request() {
         try {
             const { response } = await userAPIInstance.get(USER_URL)

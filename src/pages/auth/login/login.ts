@@ -1,7 +1,7 @@
 import { Block } from '../../../core/block/index.js'
 import { renderChild } from '../../../utils/render.js'
 import { Form } from '../form/index.js'
-import { Validate } from '../../../utils/validate.js'
+import { Validate } from '../../../utils/validate/validate.js'
 import { getFormData } from '../get-form-data.js'
 import { Router } from '../../../core/router/router.js'
 import { Routes } from '../../../constants.js'

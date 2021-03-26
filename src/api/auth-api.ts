@@ -1,8 +1,6 @@
 import { HTTP } from '../utils/http/index.js'
 import { BASE_API_URL } from '../constants.js'
 
-import { BaseAPI } from './base-api.js'
-
 const REGISTER_URL = '/auth/signup'
 const LOGIN_URL = '/auth/signin'
 const LOGOUT_URL = '/auth/logout'
@@ -22,7 +20,7 @@ export type RegisterForm = {
     password: string
 }
 
-export class AuthAPI extends BaseAPI {
+export class AuthAPI {
     async create(form: RegisterForm) {
         try {
             const { response } = await authAPIInstance.post(REGISTER_URL, {

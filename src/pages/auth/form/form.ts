@@ -1,6 +1,6 @@
 import { Block } from '../../../core/block/index.js'
 import { templator } from '../../../utils/templator.js'
-import { Validate } from '../../../utils/validate.js'
+import { Validate } from '../../../utils/validate/validate.js'
 import { FormType } from './types.js'
 import { Link } from '../../../utils/link.js'
 import { AuthController } from '../../../__data__/controllers/auth.js'

@@ -1,4 +1,4 @@
-import { Validate } from '../../utils/validate.js'
+import { Validate } from '../../utils/validate/validate.js'
 import { EventType } from '../auth/login/types.js'
 
 import { validationScheme as schemePersonalData } from './profile-edit/validate-scheme'
