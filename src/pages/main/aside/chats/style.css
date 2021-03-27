@@ -3,7 +3,7 @@
     padding: 0;
     list-style-type: none;
     overflow-y: scroll;
-    height: calc(100vh - 104px);
+    height: calc(100vh - 145px);
 
     &__item {
         cursor: pointer;
