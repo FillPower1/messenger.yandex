@@ -13,9 +13,13 @@ https://wonderful-joliot-c7d2a5.netlify.app/
 
 ## Инструменты
 
-TypeScript,
-Chai & Mocha (использовал мало),
-postcss (postcss-import, postcss-nested)
+-   Node JS,
+-   TypeScript,
+-   Chai & Mocha,
+-   postcss (postcss-import, postcss-nested),
+-   webpack (plugins, loaders),
+-   eslint, editorconfig
+-   pre-commit hook
 
 ## Запуск
 
@@ -23,8 +27,8 @@ postcss (postcss-import, postcss-nested)
 
 Команды:
 
-- `npm start` — запуск локального сервера
-- `npm run dev` — режим для разработки на typescript
-- `npm run compile` — компиляция .ts файлов (target)
-- `npm run test` — запуск тестов
-- `npm run css` — сборка css файлов с помощью postcss
+-   `npm start` — запуск development режима для разработки
+-   `npm run dev` — сборка проекта в режиме development
+-   `npm run build` — сборка проекта в режиме production
+-   `npm run test` — запуск тестов
+-   `npm run eslint` — запуск линтера
