@@ -1,8 +1,8 @@
-import { Block } from '../../../core/block/index.js'
-import { renderChild } from '../../../utils/render.js'
+import { Block } from '../../../core/block'
+import { renderChild } from '../../../utils/render'
 
-import { Search } from './search/index.js'
-import { Chats } from './chats/index.js'
+import { Search } from './search'
+import { Chats } from './chats'
 
 export class Aside extends Block {
     private static className = 'aside'
@@ -10,10 +10,7 @@ export class Aside extends Block {
     constructor() {
         super('aside', {
             className: Aside.className,
-            components: [
-                new Search(),
-                new Chats()
-            ]
+            components: [new Search(), new Chats()]
         })
     }
 

@@ -21,7 +21,7 @@
     display: block;
     width: 3px;
     height: 4px;
-    background: url('../img/ellipse.svg') no-repeat;
+    background: url('../static/img/ellipse.svg') no-repeat;
     margin-bottom: 3px;
     margin-left: auto;
     margin-right: auto;

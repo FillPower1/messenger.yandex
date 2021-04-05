@@ -1,6 +1,6 @@
 export default `
 {{#if avatar}}
-    <img src="https://ya-praktikum.tech{{avatar}}" alt="">
+    <img src="https://ya-praktikum.tech/api/v2/resources{{avatar}}" alt="">
     {{#if showBg}}
         <div class="profile__avatar-bg">
             <span>Поменять аватар</span>

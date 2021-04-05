@@ -1,14 +1,17 @@
-import { Auth, Chats, PersonalData } from './types.js'
+import { Auth, Chats, PersonalData } from './types'
 
 type Indexed<T = unknown> = {
     [key in string]: T
 }
 
-type StateType = {
-    auth: Auth
-    chats: Chats
-    personalData: PersonalData
-} | {} | any
+type StateType =
+    | {
+          auth: Auth
+          chats: Chats
+          personalData: PersonalData
+      }
+    | {}
+    | any
 
 export class State {
     private static __instance: State

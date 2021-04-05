@@ -1,10 +1,10 @@
-import { Block } from '../../../core/block/index.js'
-import { renderChild } from '../../../utils/render.js'
-import { ProfileButton } from '../../../components/profile-button/index.js'
-import { Avatar } from '../../../components/avatar/avatar.js'
+import { Block } from '../../../core/block'
+import { renderChild } from '../../../utils/render'
+import { ProfileButton } from '../../../components/profile-button'
+import { Avatar } from '../../../components/avatar/avatar'
 
-import { Info } from './info/index.js'
-import { UploadAvatar } from './upload-avatar/index.js'
+import { Info } from './info'
+import { UploadAvatar } from './upload-avatar'
 
 export class PersonalData extends Block {
     private static className = 'profile'

@@ -1,9 +1,9 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
-import { renderChild } from '../../../../utils/render.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
+import { renderChild } from '../../../../utils/render'
 
-import { Attach } from './attach.js'
-import template from './form.tmpl.js'
+import { Attach } from './attach'
+import template from './form.tmpl'
 
 export class Form extends Block {
     private static className = 'messages-send__form'

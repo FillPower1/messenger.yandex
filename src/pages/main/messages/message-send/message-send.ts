@@ -1,7 +1,7 @@
-import { Block } from '../../../../core/block/index.js'
-import { renderChild } from '../../../../utils/render.js'
+import { Block } from '../../../../core/block'
+import { renderChild } from '../../../../utils/render'
 
-import { Form } from './form.js'
+import { Form } from './form'
 
 export class MessageSend extends Block {
     private static className = 'messages-send'
@@ -9,7 +9,7 @@ export class MessageSend extends Block {
     constructor() {
         super('div', {
             className: MessageSend.className,
-            components: [new Form()],
+            components: [new Form()]
         })
     }
 

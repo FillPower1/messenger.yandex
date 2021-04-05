@@ -1,1 +1,1 @@
-export { PersonalData } from './personal-data.js'
+export { PersonalData } from './personal-data'

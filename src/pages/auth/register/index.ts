@@ -1,1 +1,1 @@
-export { Register } from './register.js'
+export { Register } from './register'

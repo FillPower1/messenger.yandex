@@ -1,11 +1,11 @@
-import { Block } from '../../core/block/index.js'
-import { renderChild } from '../../utils/render.js'
-import { Modal } from '../../components/modal/modal.js'
-import { Router } from '../../core/router/router.js'
-import { Routes } from '../../constants.js'
+import { Block } from '../../core/block'
+import { renderChild } from '../../utils/render'
+import { Modal } from '../../components/modal/modal'
+import { Router } from '../../core/router/router'
+import { Routes } from '../../constants'
 
-import { Aside } from './aside/index.js'
-import { Messages } from './messages/index.js'
+import { Aside } from './aside'
+import { Messages } from './messages'
 
 export class Main extends Block {
     private static className = 'main'

@@ -1,8 +1,8 @@
-import { Block } from '../../core/block/block.js'
-import { templator } from '../../utils/templator.js'
+import { Block } from '../../core/block'
+import { templator } from '../../utils/templator'
 
-import template from './modal.tmpl.js'
-import { ModalTypes } from './types.js'
+import template from './modal.tmpl'
+import { ModalTypes } from './types'
 
 export class Modal extends Block<ModalTypes> {
     private static className = 'modal'

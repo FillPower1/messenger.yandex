@@ -1,1 +1,1 @@
-export { UploadAvatar } from './upload-avatar.js'
+export { UploadAvatar } from './upload-avatar'

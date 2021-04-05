@@ -1,5 +1,5 @@
-import { dom } from '../../utils/render.js'
-import { Block } from '../block/index.js'
+import { dom } from '../../utils/render'
+import { Block } from '../block/index'
 
 export class Route {
     private _pathname: string | string[]

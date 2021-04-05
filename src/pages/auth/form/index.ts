@@ -1,1 +1,1 @@
-export { Form } from './form.js'
+export { Form } from './form'

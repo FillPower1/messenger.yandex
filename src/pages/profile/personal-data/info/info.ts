@@ -1,10 +1,10 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
-import { PersonalDataController } from '../../../../__data__/controllers/personal-data.js'
-import { AuthController } from '../../../../__data__/controllers/auth.js'
-import { Link } from '../../../../utils/link.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
+import { PersonalDataController } from '../../../../__data__/controllers/personal-data'
+import { AuthController } from '../../../../__data__/controllers/auth'
+import { Link } from '../../../../utils/link'
 
-import template from './info.tmpl.js'
+import template from './info.tmpl'
 
 const LINKS = [
     {
@@ -45,10 +45,10 @@ export class Info extends Block {
     }
 
     render() {
-        const {
-            first_name, email, phone,
-            display_name, login, avatar
-        } = this.state.get('personalData', {})
+        const { first_name, email, phone, display_name, login, avatar } = this.state.get(
+            'personalData',
+            {}
+        )
 
         return templator(template)({
             first_name,

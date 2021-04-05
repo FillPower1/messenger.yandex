@@ -34,7 +34,7 @@
             display: block;
             right: -16px;
             top: 3px;
-            background: url('../img/arrow.svg') no-repeat center center;
+            background: url('../static/img/arrow.svg') no-repeat center center;
             width: 8px;
             height: 10px;
         }
@@ -51,7 +51,7 @@
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            background: url('../img/loupe.svg') no-repeat center center;
+            background: url('../static/img/loupe.svg') no-repeat center center;
             width: 16px;
             height: 16px;
         }

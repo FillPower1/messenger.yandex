@@ -1,1 +1,1 @@
-export { Block } from './block.js'
+export { Block } from './block'

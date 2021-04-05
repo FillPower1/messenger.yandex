@@ -1,8 +1,8 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
-import { PersonalDataController } from '../../../../__data__/controllers/personal-data.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
+import { PersonalDataController } from '../../../../__data__/controllers/personal-data'
 
-import template from './upload-avatar.tmpl.js'
+import template from './upload-avatar.tmpl'
 
 export class UploadAvatar extends Block {
     private static className = 'modal'

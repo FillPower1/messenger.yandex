@@ -1,7 +1,7 @@
-import { ChatAPI } from '../../api/chat-api.js'
-import { Block } from '../../core/block/index.js'
-import { State } from '../state.js'
-import { Events } from '../../core/block/types.js'
+import { ChatAPI } from '../../api/chat-api'
+import { Block } from '../../core/block'
+import { State } from '../state'
+import { Events } from '../../core/block/types'
 
 const chatApi = new ChatAPI()
 const state = new State()
@@ -21,8 +21,8 @@ export class ActiveChatController {
             chatId
         })
 
-        ActiveChatController.Components.forEach((Component) => (
-            Component.eventBus.emit(Events.FLOW_RENDER))
+        ActiveChatController.Components.forEach((Component) =>
+            Component.eventBus.emit(Events.FLOW_RENDER)
         )
     }
 

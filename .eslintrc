@@ -1,0 +1,10 @@
+{
+    "extends": "xo",
+    "rules": {
+        "semi": "off",
+        "object-curly-spacing": "off",
+        "quotes": "off",
+        "indent": "off",
+        "arrow-parens": "off"
+    }
+}

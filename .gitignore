@@ -2,8 +2,6 @@
 .vscode
 .DS_Store
 node_modules
-target
-target.map
-static/target
+dist
 
 package-lock.json

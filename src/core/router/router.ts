@@ -1,4 +1,4 @@
-import { Route } from './route.js'
+import { Route } from './route'
 
 export class Router {
     private static __instance: Router

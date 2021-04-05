@@ -1,5 +1,5 @@
-import { HTTP } from '../utils/http/index.js'
-import { BASE_API_URL } from '../constants.js'
+import { HTTP } from '../utils/http'
+import { BASE_API_URL } from '../constants'
 
 const CHATS_URL = '/chats'
 const CHATS_USER_URL = '/chats/users'

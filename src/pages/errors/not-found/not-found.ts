@@ -1,9 +1,9 @@
-import { Block } from '../../../core/block/index.js'
-import { templator } from '../../../utils/templator.js'
-import { Link } from '../../../utils/link.js'
+import { Block } from '../../../core/block'
+import { templator } from '../../../utils/templator'
+import { Link } from '../../../utils/link'
 
-import { ErrorTypes } from '../types.js'
-import template from '../template.js'
+import { ErrorTypes } from '../types'
+import template from '../template'
 
 export class NotFound extends Block<ErrorTypes> {
     private static className = 'error'

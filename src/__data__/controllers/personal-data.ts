@@ -1,9 +1,9 @@
-import { Password, PersonalData, UserAPI } from '../../api/user-api.js'
-import { Block } from '../../core/block/index.js'
-import { State } from '../state.js'
-import { SUCCESS_STATUS } from '../../constants.js'
-import { Router } from '../../core/router/router.js'
-import { Events } from '../../core/block/types.js'
+import { Password, PersonalData, UserAPI } from '../../api/user-api'
+import { Block } from '../../core/block/index'
+import { State } from '../state'
+import { SUCCESS_STATUS } from '../../constants'
+import { Router } from '../../core/router/router'
+import { Events } from '../../core/block/types'
 
 const userApi = new UserAPI()
 const state = new State()
@@ -26,7 +26,8 @@ export class PersonalDataController {
     }
 
     static getPersonalData(): void {
-        userApi.request()
+        userApi
+            .request()
             .then((personalData) => {
                 state.set('personalData', personalData)
 
@@ -37,7 +38,8 @@ export class PersonalDataController {
     }
 
     static updateAvatar(avatar: File): void {
-        userApi.uploadAvatar(avatar)
+        userApi
+            .uploadAvatar(avatar)
             .then((personalData) => {
                 state.set('personalData', personalData)
 
@@ -47,7 +49,8 @@ export class PersonalDataController {
     }
 
     static editPersonalData(data: PersonalData): void {
-        userApi.updatePersonalData(data)
+        userApi
+            .updatePersonalData(data)
             .then((personalData) => {
                 state.set('personalData', personalData)
 
@@ -57,7 +60,8 @@ export class PersonalDataController {
     }
 
     static changePassword(password: Password): void {
-        userApi.updatePassword(password)
+        userApi
+            .updatePassword(password)
             .then((response) => {
                 if (response === SUCCESS_STATUS) {
                     state.set('personalData', {

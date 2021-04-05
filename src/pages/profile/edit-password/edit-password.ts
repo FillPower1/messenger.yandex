@@ -1,16 +1,16 @@
-import { Block } from '../../../core/block/index.js'
-import { renderChild } from '../../../utils/render.js'
-import { templator } from '../../../utils/templator.js'
-import { ProfileButton } from '../../../components/profile-button/index.js'
-import { Avatar } from '../../../components/avatar/index.js'
-import { Validate } from '../../../utils/validate/validate.js'
-import { validationScheme } from './validate-scheme.js'
-import { getFormData } from '../../auth/get-form-data.js'
-import { EventType } from '../../auth/login/types.js'
-import { PersonalDataController } from '../../../__data__/controllers/personal-data.js'
-import { validateProfileForm } from '../validate-form.js'
+import { Block } from '../../../core/block'
+import { renderChild } from '../../../utils/render'
+import { templator } from '../../../utils/templator'
+import { ProfileButton } from '../../../components/profile-button'
+import { Avatar } from '../../../components/avatar'
+import { Validate } from '../../../utils/validate/validate'
+import { validationScheme } from './validate-scheme'
+import { getFormData } from '../../auth/get-form-data'
+import { EventType } from '../../auth/login/types'
+import { PersonalDataController } from '../../../__data__/controllers/personal-data'
+import { validateProfileForm } from '../validate-form'
 
-import template from './edit-password.tmpl.js'
+import template from './edit-password.tmpl'
 
 const items = [
     {

@@ -1,1 +1,1 @@
-export { MessageSend } from './message-send.js'
+export { MessageSend } from './message-send'

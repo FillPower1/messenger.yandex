@@ -1,4 +1,4 @@
-import { IEventBus, Listener, CallBackType } from './types.js'
+import { IEventBus, Listener, CallBackType } from './types'
 
 export class EventBus implements IEventBus {
     listeners: Listener

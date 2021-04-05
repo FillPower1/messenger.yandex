@@ -1,4 +1,4 @@
-import { Router } from '../core/router/router.js'
+import { Router } from '../core/router/router'
 
 export const Link = (link: HTMLAnchorElement | null, callback?: () => void) => {
     link?.addEventListener('click', (event: Event) => {

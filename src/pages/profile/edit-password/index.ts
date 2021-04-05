@@ -1,1 +1,1 @@
-export { EditPassword } from './edit-password.js'
+export { EditPassword } from './edit-password'

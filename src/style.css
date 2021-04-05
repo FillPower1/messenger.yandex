@@ -1,3 +1,5 @@
+@import '../static/css/normalize.css';
+
 @import './scaffolding.css';
 @import './pages/errors/style.css';
 @import './pages/auth/form/style.css';

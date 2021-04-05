@@ -1,1 +1,1 @@
-export { ProfileButton } from './profile-button.js'
+export { ProfileButton } from './profile-button'

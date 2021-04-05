@@ -1,9 +1,9 @@
-import { AuthAPI, LoginForm, RegisterForm } from '../../api/auth-api.js'
-import { Routes, SUCCESS_STATUS } from '../../constants.js'
-import { Block } from '../../core/block/index.js'
-import { Router } from '../../core/router/index.js'
-import { Events } from '../../core/block/types.js'
-import { State } from '../state.js'
+import { AuthAPI, LoginForm, RegisterForm } from '../../api/auth-api'
+import { Routes, SUCCESS_STATUS } from '../../constants'
+import { Block } from '../../core/block'
+import { Router } from '../../core/router'
+import { Events } from '../../core/block/types'
+import { State } from '../state'
 
 const authAPIInstance = new AuthAPI()
 const state = new State()
@@ -16,7 +16,8 @@ export class AuthController {
     }
 
     static signIn(formData: LoginForm, form: HTMLFormElement): void {
-        authAPIInstance.request(formData)
+        authAPIInstance
+            .request(formData)
             .then((response) => {
                 if (response === SUCCESS_STATUS) {
                     state.set('auth', {
@@ -55,7 +56,8 @@ export class AuthController {
     }
 
     static signUp(formData: RegisterForm, form: HTMLFormElement): void {
-        authAPIInstance.create(formData)
+        authAPIInstance
+            .create(formData)
             .then((response) => {
                 if (response?.reason) {
                     state.set('auth', {
@@ -76,7 +78,6 @@ export class AuthController {
                 localStorage.setItem('auth', JSON.stringify(state.get('auth')))
                 new Router().go(Routes.Main)
                 form.reset()
-
             })
             .catch((err) => {
                 console.error(err)
@@ -92,7 +93,8 @@ export class AuthController {
     }
 
     static async logout(): Promise<void> {
-        authAPIInstance.logout()
+        authAPIInstance
+            .logout()
             .then(() => {
                 state.set('auth.isAuthorized', false)
 

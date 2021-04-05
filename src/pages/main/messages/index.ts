@@ -1,1 +1,1 @@
-export { Messages } from './messages.js'
+export { Messages } from './messages'

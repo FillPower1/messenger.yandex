@@ -1,8 +1,8 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
-import { ActiveChatController } from '../../../../__data__/controllers/message.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
+import { ActiveChatController } from '../../../../__data__/controllers/message'
 
-import template from './header.tmpl.js'
+import template from './header.tmpl'
 
 export class Header extends Block {
     private static className = 'messages__header'
@@ -37,15 +37,15 @@ export class Header extends Block {
     }
 
     componentDidRender(): void {
-        this.dropdownDtn = this.element.querySelector('.dropdown__btn');
-        (this.dropdownDtn as HTMLButtonElement).onclick = () =>
+        this.dropdownDtn = this.element.querySelector('.dropdown__btn')
+        ;(this.dropdownDtn as HTMLButtonElement).onclick = () =>
             this.dropdownDtn?.classList.add('dropdown__btn--active')
 
         const addUser = this.element.querySelector('[data-modal="#add-user"]')
-        const deleteUser = this.element.querySelector('[data-modal="#delete-user"]');
+        const deleteUser = this.element.querySelector('[data-modal="#delete-user"]')
 
-        (addUser as HTMLButtonElement).onclick = this.handleDropdownBtnClick;
-        (deleteUser as HTMLButtonElement).onclick = this.handleDropdownBtnClick
+        ;(addUser as HTMLButtonElement).onclick = this.handleDropdownBtnClick
+        ;(deleteUser as HTMLButtonElement).onclick = this.handleDropdownBtnClick
     }
 
     handleDropdownBtnClick(event: { currentTarget: any }) {
@@ -68,24 +68,26 @@ export class Header extends Block {
             const chatId = this.state.get('chats.activeChat.chatId')
 
             if (!login || login === '') {
-                (errorField as HTMLInputElement).textContent = Header.emptyLogin
+                ;(errorField as HTMLInputElement).textContent = Header.emptyLogin
                 return
             }
 
             try {
-                const hasError = await ActiveChatController.updateActiveChat(method, { login, chatId })
+                const hasError = await ActiveChatController.updateActiveChat(method, {
+                    login,
+                    chatId
+                })
 
                 if (hasError) {
-                    (errorField as HTMLElement).textContent = hasError
+                    ;(errorField as HTMLElement).textContent = hasError
                     return
                 }
 
-                parent?.classList.remove('modal--active');
-
-                (input as HTMLInputElement).value = '';
-                (errorField as HTMLElement).textContent = ''
+                parent?.classList.remove('modal--active')
+                ;(input as HTMLInputElement).value = ''
+                ;(errorField as HTMLElement).textContent = ''
             } catch (errorText) {
-                (errorField as HTMLElement).textContent = errorText
+                ;(errorField as HTMLElement).textContent = errorText
             }
         }
     }

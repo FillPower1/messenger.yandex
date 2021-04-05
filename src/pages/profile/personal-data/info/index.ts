@@ -1,1 +1,1 @@
-export { Info } from './info.js'
+export { Info } from './info'

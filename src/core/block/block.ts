@@ -1,7 +1,7 @@
-import { EventBus } from '../event-bus/index.js'
+import { EventBus } from '../event-bus'
 
-import { Events, Props } from './types.js'
-import { State } from '../../__data__/state.js'
+import { Events, Props } from './types'
+import { State } from '../../__data__/state'
 
 export class Block<P = unknown> {
     private _element: HTMLElement

@@ -1,1 +1,1 @@
-export { Aside } from './aside.js'
+export { Aside } from './aside'

@@ -1,1 +1,1 @@
-export { Disabled } from './disabled.js'
+export { Disabled } from './disabled'

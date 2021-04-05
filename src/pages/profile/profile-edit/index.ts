@@ -1,1 +1,1 @@
-export { ProfileEdit } from './profile-edit.js'
+export { ProfileEdit } from './profile-edit'

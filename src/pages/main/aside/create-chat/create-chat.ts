@@ -1,8 +1,8 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
 
-import template from './create-chat.tmpl.js'
-import { ChatsController } from '../../../../__data__/controllers/chats.js'
+import template from './create-chat.tmpl'
+import { ChatsController } from '../../../../__data__/controllers/chats'
 
 export class CreateChat extends Block {
     private static className = 'aside__create'
@@ -25,13 +25,12 @@ export class CreateChat extends Block {
     }
 
     componentDidRender(): void {
-        const button = this.element.querySelector('button');
+        const button = this.element.querySelector('button')
 
-        (button as HTMLButtonElement).onclick = () => {
+        ;(button as HTMLButtonElement).onclick = () => {
             this.modal = document.querySelector('#create-chat')
-            this.modal?.closest('.modal')?.classList.add('modal--active');
-
-            (this.modal as HTMLFormElement).onsubmit = this.handleButtonClick
+            this.modal?.closest('.modal')?.classList.add('modal--active')
+            ;(this.modal as HTMLFormElement).onsubmit = this.handleButtonClick
         }
     }
 
@@ -44,12 +43,12 @@ export class CreateChat extends Block {
         const errorText = await ChatsController.createChat({ title: input?.value })
 
         if (errorText && errorText.reason) {
-            (errorField as HTMLElement).textContent = errorText.reason
+            ;(errorField as HTMLElement).textContent = errorText.reason
             return
         }
 
-        (input as HTMLInputElement).value = '';
-        (errorField as HTMLElement).textContent = ''
+        ;(input as HTMLInputElement).value = ''
+        ;(errorField as HTMLElement).textContent = ''
         this.modal?.closest('.modal')?.classList.remove('modal--active')
     }
 
@@ -60,6 +59,6 @@ export class CreateChat extends Block {
     }
 
     render(): string {
-        return templator(template)()
+        return templator(template)({})
     }
 }

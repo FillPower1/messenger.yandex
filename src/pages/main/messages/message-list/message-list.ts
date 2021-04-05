@@ -1,8 +1,8 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
 
-import template from './message-list.tmpl.js'
-import { MessageListTypes } from './types.js'
+import template from './message-list.tmpl'
+import { MessageListTypes } from './types'
 
 export class MessageList extends Block<MessageListTypes> {
     private static className = 'messages__main'

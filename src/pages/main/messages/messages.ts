@@ -1,11 +1,11 @@
-import { Block } from '../../../core/block/index.js'
-import { renderChild } from '../../../utils/render.js'
+import { Block } from '../../../core/block'
+import { renderChild } from '../../../utils/render'
 
-import { Header } from './header/index.js'
-import { Disabled } from './disabled/index.js'
-import { MessageList } from './message-list/index.js'
-import { MessageSend } from './message-send/index.js'
-import { ActiveChatController } from '../../../__data__/controllers/message.js'
+import { Header } from './header'
+import { Disabled } from './disabled'
+import { MessageList } from './message-list'
+import { MessageSend } from './message-send'
+import { ActiveChatController } from '../../../__data__/controllers/message'
 
 const MOCK = {
     messages: [
@@ -32,8 +32,7 @@ const MOCK = {
             text: 'Тестовое сообщение для теста сообщений',
             time: '21:34',
             attach: {
-                image:
-                    'https://c.pxhere.com/photos/54/aa/cat_animal_nature_close_up-1106847.jpg!d'
+                image: 'https://c.pxhere.com/photos/54/aa/cat_animal_nature_close_up-1106847.jpg!d'
             }
         }
     ]
@@ -58,11 +57,7 @@ export class Messages extends Block {
 
         if (activeTitle) {
             this.setProps({
-                components: [
-                    new Header(),
-                    new MessageList(MOCK),
-                    new MessageSend()
-                ]
+                components: [new Header(), new MessageList(MOCK), new MessageSend()]
             })
         }
 

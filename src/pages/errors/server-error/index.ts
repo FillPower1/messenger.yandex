@@ -1,1 +1,1 @@
-export { ServerError } from './server-error.js'
+export { ServerError } from './server-error'

@@ -1,1 +1,1 @@
-export { Main } from './main.js'
+export { Main } from './main'

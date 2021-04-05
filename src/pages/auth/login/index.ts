@@ -1,1 +1,1 @@
-export { Login } from './login.js'
+export { Login } from './login'

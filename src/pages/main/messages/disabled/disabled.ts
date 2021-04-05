@@ -1,7 +1,7 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
 
-import template from './disabled.tmpl.js'
+import template from './disabled.tmpl'
 
 export class Disabled extends Block {
     private static className = 'messages__disabled'

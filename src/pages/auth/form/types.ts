@@ -1,6 +1,6 @@
 // TODO: отрефачить повтор с добавлением webpack
-import { validationScheme as validationRegisterScheme } from '../register/validate-scheme.js'
-import { validationScheme as validationLoginScheme } from '../login/validate-scheme.js'
+import { validationScheme as validationRegisterScheme } from '../register/validate-scheme'
+import { validationScheme as validationLoginScheme } from '../login/validate-scheme'
 
 export type ValidationScheme = typeof validationLoginScheme | typeof validationRegisterScheme
 

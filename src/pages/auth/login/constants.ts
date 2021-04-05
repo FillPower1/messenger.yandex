@@ -2,7 +2,7 @@ export const FORM_TEXT = {
     title: 'Вход',
     text: 'Авторизоваться',
     href: '/register',
-    link: 'Нет аккаунта?',
+    link: 'Нет аккаунта?'
 }
 
 export const FORM_ITEMS = [

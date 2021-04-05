@@ -1,8 +1,8 @@
-import { Block } from '../../core/block/block.js'
-import { templator } from '../../utils/templator.js'
-import { Link } from '../../utils/link.js'
+import { Block } from '../../core/block'
+import { templator } from '../../utils/templator'
+import { Link } from '../../utils/link'
 
-import template from './profile-button.tmpl.js'
+import template from './profile-button.tmpl'
 
 export class ProfileButton extends Block {
     private static className = 'profile__button'
@@ -18,6 +18,6 @@ export class ProfileButton extends Block {
     }
 
     render() {
-        return templator(template)()
+        return templator(template)({})
     }
 }

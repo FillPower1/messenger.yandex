@@ -1,9 +1,9 @@
-import { BASE_URL } from '../../constants.js'
-import { Block } from '../../core/block/block.js'
-import { templator } from '../../utils/templator.js'
-import { PersonalDataController } from '../../__data__/controllers/personal-data.js'
+import { BASE_URL } from '../../constants'
+import { Block } from '../../core/block'
+import { templator } from '../../utils/templator'
+import { PersonalDataController } from '../../__data__/controllers/personal-data'
 
-import template from './avatar.tmpl.js'
+import template from './avatar.tmpl'
 
 export class Avatar extends Block {
     private static className = 'profile__avatar'

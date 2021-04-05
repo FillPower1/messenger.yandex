@@ -1,9 +1,9 @@
-import { Block } from '../../../../core/block/index.js'
-import { templator } from '../../../../utils/templator.js'
-import { ChatsController } from '../../../../__data__/controllers/chats.js'
-import { ActiveChatController } from '../../../../__data__/controllers/message.js'
+import { Block } from '../../../../core/block'
+import { templator } from '../../../../utils/templator'
+import { ChatsController } from '../../../../__data__/controllers/chats'
+import { ActiveChatController } from '../../../../__data__/controllers/message'
 
-import template from './chats.tmpl.js'
+import template from './chats.tmpl'
 
 export class Chats extends Block {
     private static className = 'dialogs'

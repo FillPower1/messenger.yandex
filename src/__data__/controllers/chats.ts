@@ -1,7 +1,7 @@
-import { ChatAPI } from '../../api/chat-api.js'
-import { Block } from '../../core/block/index.js'
-import { State } from '../state.js'
-import { Events } from '../../core/block/types.js'
+import { ChatAPI } from '../../api/chat-api'
+import { Block } from '../../core/block'
+import { State } from '../state'
+import { Events } from '../../core/block/types'
 
 const chatApi = new ChatAPI()
 const state = new State()
@@ -10,7 +10,7 @@ type CreateChatData = {
     title?: string
 }
 
-type CreateChatErrorDto = { error: string, reason: string }
+type CreateChatErrorDto = { error: string; reason: string }
 
 export class ChatsController {
     static Page: Block
@@ -20,7 +20,8 @@ export class ChatsController {
     }
 
     static getChats(): void {
-        chatApi.request()
+        chatApi
+            .request()
             .then((chatList) => {
                 const chats = JSON.parse(chatList.response)
                 state.set('chats', chats)
@@ -31,7 +32,8 @@ export class ChatsController {
     }
 
     static createChat(data: CreateChatData): Promise<CreateChatErrorDto | void> {
-        return chatApi.create(data)
+        return chatApi
+            .create(data)
             .then(({ response }) => {
                 const result = JSON.parse(response)
 

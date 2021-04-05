@@ -1,11 +1,11 @@
-import { Block } from '../../../core/block/index.js'
-import { templator } from '../../../utils/templator.js'
-import { Validate } from '../../../utils/validate/validate.js'
-import { FormType } from './types.js'
-import { Link } from '../../../utils/link.js'
-import { AuthController } from '../../../__data__/controllers/auth.js'
+import { Block } from '../../../core/block'
+import { templator } from '../../../utils/templator'
+import { Validate } from '../../../utils/validate/validate'
+import { FormType } from './types'
+import { Link } from '../../../utils/link'
+import { AuthController } from '../../../__data__/controllers/auth'
 
-import template from './form.tmpl.js'
+import template from './form.tmpl'
 
 export class Form extends Block<FormType> {
     private static className = 'form'
