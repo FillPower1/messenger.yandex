@@ -29,6 +29,9 @@
         "express": "4.17.1",
         "handlebars": "4.7.7"
     },
+    "pre-commit": [
+        "eslint"
+    ],
     "devDependencies": {
         "@babel/cli": "^7.13.10",
         "@babel/core": "^7.13.10",
@@ -60,6 +63,7 @@
         "postcss-import": "14.0.0",
         "postcss-loader": "5.2.0",
         "postcss-nested": "5.0.5",
+        "pre-commit": "^1.2.2",
         "serve": "11.3.2",
         "sinon": "9.2.4",
         "style-loader": "2.0.0",
