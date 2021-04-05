@@ -2,13 +2,12 @@ import { Block } from '../../../core/block'
 import { templator } from '../../../utils/templator'
 import { Link } from '../../../utils/link'
 
-import { ErrorTypes } from '../types'
-import template from '../template'
+import template from '../template.tmpl'
 
-export class NotFound extends Block<ErrorTypes> {
+export class NotFound extends Block {
     private static className = 'error'
 
-    constructor(props: ErrorTypes) {
+    constructor() {
         super('div', {
             className: NotFound.className,
             title: '404',

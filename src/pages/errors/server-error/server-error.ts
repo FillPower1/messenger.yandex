@@ -2,13 +2,12 @@ import { Block } from '../../../core/block'
 import { templator } from '../../../utils/templator'
 import { Link } from '../../../utils/link'
 
-import { ErrorTypes } from '../types'
-import template from '../template'
+import template from '../template.tmpl'
 
-export class ServerError extends Block<ErrorTypes> {
+export class ServerError extends Block {
     private static className = 'error'
 
-    constructor(props: ErrorTypes) {
+    constructor() {
         super('div', {
             className: ServerError.className,
             title: '500',

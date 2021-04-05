@@ -49,13 +49,16 @@ module.exports = {
     mode: IS_DEV ? 'development' : 'production',
     devtool: IS_DEV ? 'eval-cheap-module-source-map' : false,
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
+        alias: {
+            handlebars: 'handlebars/dist/handlebars.min.js'
+        }
     },
     devServer: {
         contentBase: 'dist',
         compress: true,
         port: 3000,
-        hot: true,
+        hot: IS_DEV,
         historyApiFallback: true
     },
     module: {
@@ -63,6 +66,11 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader'
+            },
+            {
+                test: /\.hbs$/,
+                loader: 'handlebars-loader',
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
