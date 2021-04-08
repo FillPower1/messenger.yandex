@@ -34,17 +34,23 @@ export class MessagesController {
         this.send(String(id), 'get old')
     }
 
+    sortMessages(messages: IMessage[]) {
+        return messages.sort((a: IMessage, b: IMessage) => {
+            return new Date(a.time).getTime() - new Date(b.time).getTime()
+        })
+    }
+
     subscribe(fn: (messages: IMessage[]) => void) {
         this.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data)
 
             if (Array.isArray(data)) {
-                fn(data)
+                fn(this.sortMessages(data))
                 return
             }
 
             if (data.type === 'message') {
-                fn([data])
+                fn(this.sortMessages([data]))
             }
         })
     }

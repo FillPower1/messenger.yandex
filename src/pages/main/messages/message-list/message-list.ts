@@ -9,6 +9,7 @@ const messages = new MessagesController()
 
 export class MessageList extends Block {
     private static className = 'messages__main'
+    private position: 'top' | 'bottom' = 'bottom'
 
     constructor() {
         super('div', {
@@ -35,12 +36,24 @@ export class MessageList extends Block {
         return result
     }
 
-    onMessage(messages: IMessage[]) {
-        const messageList = this.props.messages.concat(messages).map((item: IMessage) => ({
+    formatMessages(messages: IMessage[]) {
+        return messages.map((item: IMessage) => ({
             ...item,
             im: this.state.get('personalData.id') === item.user_id,
             time: new Date(item.time).toLocaleString()
         }))
+    }
+
+    onMessage(messages: IMessage[]) {
+        let messageList = []
+
+        if (messages.length === 1) {
+            messageList = this.formatMessages([...this.props.messages, ...messages])
+            this.position = 'bottom'
+        } else {
+            messageList = this.formatMessages([...messages, ...this.props.messages])
+            this.position = 'top'
+        }
 
         this.setProps({
             ...this.props,
@@ -53,16 +66,17 @@ export class MessageList extends Block {
     }
 
     componentDidRender() {
-        this.element.scrollTo(0, this.element.scrollHeight)
+        if (!this.position || this.position === 'bottom') {
+            this.element.scrollTo(0, this.element.scrollHeight)
+        }
 
         const btn = this.element.querySelector('button')
 
         if (btn) {
             btn.onclick = () => {
-                const lastMessage = this.props.messages[this.props.messages.length - 1]?.id
-
                 if (this.props.messages.length !== this.state.get('unread_count', 0)) {
-                    messages.getOldMessages(lastMessage)
+                    messages.getOldMessages(this.props.messages.length)
+                    this.element.scrollTo(0, 0)
                 }
             }
         }
