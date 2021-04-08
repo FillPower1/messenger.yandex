@@ -5,7 +5,7 @@ https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1.
 
 ## Demo
 
-https://wonderful-joliot-c7d2a5.netlify.app/
+https://infinite-scrubland-43831.herokuapp.com/
 
 ## Описание
 
@@ -16,18 +16,18 @@ https://wonderful-joliot-c7d2a5.netlify.app/
 -   Node JS,
 -   TypeScript,
 -   Chai & Mocha,
--   postcss (postcss-import, postcss-nested),
--   webpack (plugins, loaders),
--   eslint, editorconfig
--   pre-commit hook
+-   postcss,
+-   webpack,
+-   eslint, editorconfig,
+-   pre-commit hook,
+-   Docker,
+-   nginx
 
 ## Запуск
 
-Проект разворачивается на `localhost:3000`
-
 Команды:
 
--   `npm start` — запуск development режима для разработки
+-   `npm start` — запуск dev-server для разработки (`localhost:3000`)
 -   `npm run dev` — сборка проекта в режиме development
 -   `npm run build` — сборка проекта в режиме production
 -   `npm run test` — запуск тестов
