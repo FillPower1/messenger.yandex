@@ -97,6 +97,7 @@ export class AuthController {
             .logout()
             .then(() => {
                 state.set('auth.isAuthorized', false)
+                state.set('activeChat', {})
 
                 localStorage.removeItem('auth')
                 new Router().go(Routes.Login)

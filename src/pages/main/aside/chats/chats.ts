@@ -1,9 +1,11 @@
 import { Block } from '../../../../core/block'
 import { templator } from '../../../../utils/templator'
 import { ChatsController } from '../../../../__data__/controllers/chats'
-import { ActiveChatController } from '../../../../__data__/controllers/message'
+import { ActiveChatController } from '../../../../__data__/controllers/active-chat'
+import { PersonalDataController } from '../../../../__data__/controllers/personal-data'
 
 import template from './chats.tmpl'
+import { IChat } from './types'
 
 export class Chats extends Block {
     private static className = 'dialogs'
@@ -15,6 +17,7 @@ export class Chats extends Block {
     }
 
     componentDidMount(): void {
+        PersonalDataController.getPersonalData()
         ChatsController.subscribe(this)
         ChatsController.getChats()
 
@@ -28,14 +31,33 @@ export class Chats extends Block {
 
         if (target.classList.contains('dialog')) {
             const chatId = target.getAttribute('id')
-            const title = target.textContent.trim()
+            const title = target.querySelector('.dialog__peer').textContent
 
             ActiveChatController.setActiveChat(title, chatId)
+            this.setProps({ activeChatId: chatId })
         }
     }
 
+    componentDidUpdate(oldProps: any, newProps: any) {
+        return oldProps?.activeChatId !== newProps?.activeChatId
+    }
+
     render(): string {
-        const chats = this.state.get('chats', {})
+        let chats = this.state.get('chatList', [])
+
+        chats = chats
+            .map((chat: IChat) => ({ ...chat, last_message: JSON.parse(chat.last_message) }))
+            .map((chat: IChat) => {
+                if (chat.id === Number(this.props.activeChatId)) {
+                    return {
+                        ...chat,
+                        active: true
+                    }
+                }
+
+                return chat
+            })
+
         return templator(template)({ chats })
     }
 }

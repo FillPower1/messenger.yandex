@@ -31,8 +31,8 @@ export class PersonalDataController {
             .then((personalData) => {
                 state.set('personalData', personalData)
 
-                PersonalDataController.AvatarPage.eventBus.emit(Events.FLOW_RENDER)
-                PersonalDataController.ProfilePage.eventBus.emit(Events.FLOW_RENDER)
+                PersonalDataController.AvatarPage?.eventBus.emit(Events.FLOW_RENDER)
+                PersonalDataController.ProfilePage?.eventBus.emit(Events.FLOW_RENDER)
             })
             .catch((err) => console.error(err))
     }

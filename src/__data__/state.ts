@@ -1,9 +1,5 @@
 import { Auth, Chats, PersonalData } from './types'
 
-type Indexed<T = unknown> = {
-    [key in string]: T
-}
-
 type StateType =
     | {
           auth: Auth
@@ -25,15 +21,20 @@ export class State {
         State.__instance = this
     }
 
-    set(path: string, value: unknown): Indexed | unknown {
+    set(path: string, value: unknown) {
         const keys = path.split('.')
 
         const result = keys.reduceRight((memo, key) => ({ [key]: memo }), value)
-
-        return Object.assign(this.state, result)
+        Object.assign(this.state, result)
     }
 
-    get(path: string, defaultValue: any = {}) {
+    get(path: string | string[], defaultValue: any = {}): any {
+        if (Array.isArray(path)) {
+            return path.map((item: string) => {
+                return this.get(item)
+            })
+        }
+
         const keys = path.split('.')
 
         let result = this.state

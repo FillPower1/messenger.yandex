@@ -3,6 +3,8 @@ import { BASE_API_URL } from '../constants'
 
 const CHATS_URL = '/chats'
 const CHATS_USER_URL = '/chats/users'
+const CHATS_TOKEN_URL = '/chats/token'
+const CHATS_COUNT_UNREAD_MESSAGES_URL = '/chats/new/'
 
 const chatAPIInstance = new HTTP(BASE_API_URL)
 
@@ -42,5 +44,13 @@ export class ChatAPI {
                 'Content-Type': 'application/json'
             }
         })
+    }
+
+    initChat(id: string) {
+        return chatAPIInstance.post(`${CHATS_TOKEN_URL}/${id}`)
+    }
+
+    getCountUnreadMessages(id: string) {
+        return chatAPIInstance.get(`${CHATS_COUNT_UNREAD_MESSAGES_URL}/${id}`)
     }
 }

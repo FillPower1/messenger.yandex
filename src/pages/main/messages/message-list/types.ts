@@ -1,12 +1,9 @@
-export type MessageListTypes = {
-    messages: {
-        text?: string
-        time?: string
-        im?: boolean
-        read?: boolean
-        attach?: {
-            image?: string
-        }
-        date?: string
-    }[],
+export interface IMessage {
+    type: 'message' | 'user_connected'
+    content: string
+    chat_id: number
+    user_id: number
+    is_read: boolean
+    id: number
+    time: string
 }

@@ -6,7 +6,7 @@ import { Events } from '../../core/block/types'
 const chatApi = new ChatAPI()
 const state = new State()
 
-type CreateChatData = {
+export type CreateChatData = {
     title?: string
 }
 
@@ -24,7 +24,7 @@ export class ChatsController {
             .request()
             .then((chatList) => {
                 const chats = JSON.parse(chatList.response)
-                state.set('chats', chats)
+                state.set('chatList', chats)
 
                 ChatsController.Page.eventBus.emit(Events.FLOW_RENDER)
             })

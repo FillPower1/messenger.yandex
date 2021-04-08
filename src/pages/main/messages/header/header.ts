@@ -1,6 +1,6 @@
 import { Block } from '../../../../core/block'
 import { templator } from '../../../../utils/templator'
-import { ActiveChatController } from '../../../../__data__/controllers/message'
+import { ActiveChatController } from '../../../../__data__/controllers/active-chat'
 
 import template from './header.tmpl'
 
@@ -65,7 +65,7 @@ export class Header extends Block {
 
             const login = input?.value
             const method = this?.modal?.dataset?.method
-            const chatId = this.state.get('chats.activeChat.chatId')
+            const chatId = this.state.get('activeChat.chatId')
 
             if (!login || login === '') {
                 ;(errorField as HTMLInputElement).textContent = Header.emptyLogin
@@ -93,7 +93,7 @@ export class Header extends Block {
     }
 
     render() {
-        const title = this.state.get('chats.activeChat.title', '')
+        const title = this.state.get('activeChat.title', '')
 
         return templator(template)({
             title

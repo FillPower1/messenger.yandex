@@ -1,6 +1,8 @@
+import { BASE_RESOURCE_URL } from '../../constants'
+
 export default `
 {{#if avatar}}
-    <img src="https://ya-praktikum.tech/api/v2/resources{{avatar}}" alt="">
+    <img src="${BASE_RESOURCE_URL}/{{avatar}}" alt="">
     {{#if showBg}}
         <div class="profile__avatar-bg">
             <span>Поменять аватар</span>
