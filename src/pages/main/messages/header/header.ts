@@ -38,14 +38,23 @@ export class Header extends Block {
 
     componentDidRender(): void {
         this.dropdownDtn = this.element.querySelector('.dropdown__btn')
-        ;(this.dropdownDtn as HTMLButtonElement).onclick = () =>
-            this.dropdownDtn?.classList.add('dropdown__btn--active')
 
-        const addUser = this.element.querySelector('[data-modal="#add-user"]')
-        const deleteUser = this.element.querySelector('[data-modal="#delete-user"]')
+        if (this.dropdownDtn) {
+            this.dropdownDtn.onclick = () =>
+                this.dropdownDtn?.classList.add('dropdown__btn--active')
+        }
 
-        ;(addUser as HTMLButtonElement).onclick = this.handleDropdownBtnClick
-        ;(deleteUser as HTMLButtonElement).onclick = this.handleDropdownBtnClick
+        const addUser: HTMLButtonElement | null = this.element.querySelector(
+            '[data-modal="#add-user"]'
+        )
+        const deleteUser: HTMLButtonElement | null = this.element.querySelector(
+            '[data-modal="#delete-user"]'
+        )
+
+        if (addUser && deleteUser) {
+            addUser.onclick = this.handleDropdownBtnClick
+            deleteUser.onclick = this.handleDropdownBtnClick
+        }
     }
 
     handleDropdownBtnClick(event: { currentTarget: any }) {
@@ -57,7 +66,7 @@ export class Header extends Block {
             return
         }
 
-        this.modal.onsubmit = async (event: MouseEvent) => {
+        this.modal.onsubmit = async (event) => {
             event.preventDefault()
 
             const input = this.modal?.querySelector('input')

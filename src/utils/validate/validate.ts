@@ -17,9 +17,11 @@ type OptionsType = {
 }
 
 export class Validate {
-    private readonly form: {
-        elements: any
-    } | HTMLFormElement
+    private readonly form:
+        | {
+              elements: any
+          }
+        | HTMLFormElement
     private readonly options: OptionsType
     private static defaultWrapper = 'label'
     private static defaultTag = 'SPAN'
@@ -49,9 +51,9 @@ export class Validate {
     }
 
     private initInputEvents = (name: string): void => {
-        this.form.elements[name].addEventListener('keyup', this.handleOnInput)
-        this.form.elements[name].addEventListener('focus', this.handleOnInput)
-        this.form.elements[name].addEventListener('blur', this.handleOnInput)
+        this.form.elements[name]?.addEventListener('keyup', this.handleOnInput)
+        this.form.elements[name]?.addEventListener('focus', this.handleOnInput)
+        this.form.elements[name]?.addEventListener('blur', this.handleOnInput)
         this.form.elements[name].dataset.type = Types.required
     }
 
@@ -70,9 +72,9 @@ export class Validate {
     }
 
     validateOnSubmit = (): boolean => {
-        const labels = (this.form as HTMLFormElement).querySelectorAll(Validate.defaultWrapper);
+        const labels = (this.form as HTMLFormElement).querySelectorAll(Validate.defaultWrapper)
 
-        (labels as unknown as HTMLLabelElement[]).forEach((label) => {
+        ;((labels as unknown) as HTMLLabelElement[]).forEach((label) => {
             if (label.lastChild?.nodeName === Validate.defaultTag) {
                 label.lastChild?.remove()
             }
@@ -90,7 +92,10 @@ export class Validate {
 
     private validateInput = (input: HTMLInputElement): boolean => {
         const parent = input.closest(Validate.defaultWrapper)
-        const { dataset: { type }, name } = input
+        const {
+            dataset: { type },
+            name
+        } = input
         const node = this.getCurrentNode(name, type)
 
         if (!parent) {
